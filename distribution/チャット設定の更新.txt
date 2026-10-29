@@ -1,9 +1,7 @@
-﻿チャット設定のみの更新です。Minecraftを終了してから、config/chatutilities.jsonを使用中のゲームディレクトリへコピーしてください。既存設定は先にバックアップしてください。
-
-変更内容:
-・[+] 名前 の参加通知を会話欄へ表示
-・サーバーのTIP系、スタッフ募集、単独の募集用Discordリンクと空行を両方の欄で非表示
-・現在調整済みの位置、窓サイズ、文字サイズ、透明度を保存
-・Cobblestone S17のMOD本体や、ほかのHUD設定は変更なし
-
-プレイヤーの会話本文にTIPやDiscordのURLが含まれていても、通常の会話形式ならこの非表示ルールの対象にはなりません。
+Cobblestone S17 v1.3 チャット設定
+会話・通知の文字倍率を0.8に固定。
+会話欄: X=0/Y=175、通知欄: X=0/Y=112。どちらも幅215・高さ80。
+以下のストア宣伝を両方の欄で非表示にします。
+[!] Ranks, crates, boosters and bundles!
+[!] Click here to check out the store!
+Minecraftを終了してからconfig/chatutilities.jsonをコピーしてください。

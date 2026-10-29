@@ -1,4 +1,4 @@
-# Cobblestone S17 version 1.2
+# Cobblestone S17 version 1.3
 
 Minecraft 1.21.11 / Fabric / Java 21. Based on Cobblestone Helper 1.4.4 by JandBDavenport (commit 36830363a78c44c735070476eadb35b9221f9198).
 
@@ -47,3 +47,10 @@ This modified source follows the repository's GPL-3.0 license (LICENSE), rather 
 ## 1.2
 - Release name: Cobblestone S17. Version: 1.2. Includes all changes listed above.
 
+
+## 1.3
+- Fixed both chat font scales at 0.8 and updated window positions and sizes.
+- Hide the two standalone store promotion messages in both chat windows.
+- Mod gameplay behavior is unchanged from 1.2.
+
+- Recognize S17 MOB QUEST #1/#2 as well as legacy BOSS QUEST titles, normalize title case, support comma-separated kill counts, and wait for all four quests before finishing sync. HUD labels now use MOB.

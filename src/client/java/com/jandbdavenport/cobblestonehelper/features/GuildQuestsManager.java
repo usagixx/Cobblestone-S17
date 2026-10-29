@@ -352,11 +352,11 @@ public class GuildQuestsManager {
 					continue;
 				}
 
-				String displayName = stack.getName().getString();
+				String displayName = stack.getName().getString().replaceAll("§.", "").toUpperCase(java.util.Locale.ROOT);
 				List<Text> lore = ContainerScreenUtils.getLoreLines(stack);
 
 				// Parse boss quest #1
-				if (displayName.contains("BOSS QUEST #1")) {
+				if (displayName.contains("BOSS QUEST #1") || displayName.contains("MOB QUEST #1")) {
 					if (lore.size() > 2) {
 						String actionLine = lore.get(2).getString();
 						newBoss1ActionLine = actionLine.trim().replaceAll("^\\|\\s*", ""); // Strip leading pipe
@@ -369,7 +369,7 @@ public class GuildQuestsManager {
 					questItemsFound++;
 				}
 				// Parse boss quest #2
-				else if (displayName.contains("BOSS QUEST #2")) {
+				else if (displayName.contains("BOSS QUEST #2") || displayName.contains("MOB QUEST #2")) {
 					if (lore.size() > 2) {
 						String actionLine = lore.get(2).getString();
 						newBoss2ActionLine = actionLine.trim().replaceAll("^\\|\\s*", ""); // Strip leading pipe
@@ -413,8 +413,8 @@ public class GuildQuestsManager {
 				}
 			}
 
-			// If we found at least 2 quest items, mark scrape as complete
-			if (questItemsFound >= 2) {
+			// Only finalize once all four quest items have arrived
+			if (questItemsFound >= 4) {
 				scraped = true;
 				dataState = DataState.KNOWN;
 
@@ -473,7 +473,7 @@ public class GuildQuestsManager {
 	private static String extractBossTarget(String actionLine) {
 		// Pattern: word (Kill) followed by a number, then the boss name
 		// Handles formats like " | Kill 3 Overworld Cadaver"
-		Pattern pattern = Pattern.compile("[A-Za-z]+\\s+\\d+\\s+(.+)");
+		Pattern pattern = Pattern.compile("[A-Za-z]+\\s+[\\d,]+\\s+(.+)");
 		Matcher matcher = pattern.matcher(actionLine);
 		if (matcher.find()) {
 			return matcher.group(1).trim(); // Return everything after the number
@@ -713,8 +713,8 @@ public class GuildQuestsManager {
         var rows = new java.util.ArrayList<HudRow>();
         if (dataState == DataState.NO_DATA) {
             if (preview) {
-                rows.add(new HudRow("ʙᴏꜱꜱ Ⅰ", "Hollowjack", ModConfig.gqColorTarget));
-                rows.add(new HudRow("ʙᴏꜱꜱ Ⅱ", "Mirewyrm", ModConfig.gqColorTarget));
+                rows.add(new HudRow("ᴍᴏʙ Ⅰ", "Hollowjack", ModConfig.gqColorTarget));
+                rows.add(new HudRow("ᴍᴏʙ Ⅱ", "Mirewyrm", ModConfig.gqColorTarget));
                 rows.add(new HudRow("ᴄʀᴏᴘ Ⅰ", "Carrot", ModConfig.gqColorTarget));
                 rows.add(new HudRow("ᴄʀᴏᴘ Ⅱ", "Honeycomb", ModConfig.gqColorTarget));
                 rows.add(new HudRow("ᴅᴏɴᴇ", "0/4", ModConfig.gqColorTarget));
@@ -724,8 +724,8 @@ public class GuildQuestsManager {
             }
             return rows;
         }
-        if (!boss1Complete && !boss1ActionLine.isEmpty()) rows.add(new HudRow("ʙᴏꜱꜱ Ⅰ", boss1Target, ModConfig.gqColorTarget));
-        if (!boss2Complete && !boss2ActionLine.isEmpty()) rows.add(new HudRow("ʙᴏꜱꜱ Ⅱ", boss2Target, ModConfig.gqColorTarget));
+        if (!boss1Complete && !boss1ActionLine.isEmpty()) rows.add(new HudRow("ᴍᴏʙ Ⅰ", boss1Target, ModConfig.gqColorTarget));
+        if (!boss2Complete && !boss2ActionLine.isEmpty()) rows.add(new HudRow("ᴍᴏʙ Ⅱ", boss2Target, ModConfig.gqColorTarget));
         if (!crop3kComplete && !crop3kActionLine.isEmpty()) rows.add(new HudRow("ᴄʀᴏᴘ Ⅰ", crop3kTarget, ModConfig.gqColorTarget));
         if (!crop7500Complete && !crop7500ActionLine.isEmpty()) rows.add(new HudRow("ᴄʀᴏᴘ Ⅱ", crop7500Target, ModConfig.gqColorTarget));
         int done = (boss1Complete ? 1 : 0) + (boss2Complete ? 1 : 0) + (crop3kComplete ? 1 : 0) + (crop7500Complete ? 1 : 0);
@@ -935,3 +935,4 @@ public class GuildQuestsManager {
 		}
 	}
 }
+

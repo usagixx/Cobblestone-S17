@@ -4,14 +4,22 @@
 
 ## 日本語
 
-### v1.2の更新内容
+### v1.3の更新内容
+
+- S17の MOB QUEST #1／#2 を読み取れるよう修正。4件すべてのクエストを受信してから同期を完了します。
+
+- 会話欄・通知欄の文字倍率を0.8に固定しました。
+- 会話欄は X=0／Y=175、通知欄は X=0／Y=112。どちらも幅215・高さ80です。
+- ストア宣伝「[!] Ranks, crates, boosters and bundles!」「[!] Click here to check out the store!」を両方のチャット欄で非表示にします。
+
+### v1.2から引き継いだ変更
 
 - ボスバーを「セレスティアル → ウェザー → グローバル → クッキー → その他」の優先順で表示します。同じ優先度ではサーバーの順番を保持します。
 - `[+] 名前` の参加通知を会話欄に表示します。
 - サーバーのTIP・スタッフ募集・単独の募集用Discordリンク・空行を両方のチャット欄で非表示にします。通常の会話本文は対象外です。
 - チャット欄の位置・サイズ・文字サイズ・透明度を調整しました。
 
-[v1.2をダウンロード](distribution/Cobblestone-S17-v1.2-portable.zip) · [導入手順](distribution/README-はじめに.txt)
+[v1.3をダウンロード](distribution/Cobblestone-S17-v1.3-portable.zip) · [導入手順](distribution/README-はじめに.txt)
 
 Minecraft Java版の **play.cobblestone.gg** 向けに、Cobblestone HelperをS17用へ改変したクライアントMODです。  
 **Minecraft 1.21.11／Fabric** に対応しています。
@@ -85,14 +93,22 @@ Minecraft Java版の **play.cobblestone.gg** 向けに、Cobblestone HelperをS1
 
 ## English
 
-### What is new in v1.2
+### What is new in v1.3
+
+- Fixed recognition of S17 MOB QUEST #1 / #2. Quest sync completes after all four quest items have arrived.
+
+- Both chat font scales are fixed at 0.8.
+- Conversation position: X=0, Y=175. Notification position: X=0, Y=112. Both windows are 215 wide and 80 high.
+- Hide the two standalone store promotions in both chat windows: [!] Ranks, crates, boosters and bundles! / [!] Click here to check out the store!
+
+### Changes retained from v1.2
 
 - Boss bars are sorted by priority: Celestial → Weather → Global → Cookie → Others. Server order is preserved within each priority group.
 - `[+] Name` join notifications appear in the conversation window.
 - Server TIPs, staff recruitment messages, standalone recruitment Discord links, and blank lines are hidden in both chat windows. Regular player conversations are excluded from these hide rules.
 - Updated chat window positions, sizes, font sizes, and opacity.
 
-[Download v1.2](distribution/Cobblestone-S17-v1.2-portable.zip)
+[Download v1.3](distribution/Cobblestone-S17-v1.3-portable.zip)
 
 A client-side modification of Cobblestone Helper updated for S17 on **play.cobblestone.gg** in Minecraft Java Edition.  
 Supports **Minecraft 1.21.11 / Fabric**.
@@ -161,4 +177,6 @@ Messages are classified by their format. Unsupported conversation formats may ap
 The original **Cobblestone Helper** was created by **JandBDavenport**.
 
 This mod is a modified version and is not an official Cobblestone server mod. The original code and modifications are licensed under GPL-3.0.
+
+
 

@@ -1,0 +1,109 @@
+{
+  "windows": [
+    {
+      "x": 0,
+      "y": 175,
+      "width": 215,
+      "height": 80,
+      "isMain": true,
+      "visible": true,
+      "maxMessages": 2000,
+      "backgroundColor": "#88000000",
+      "timestampEnabled": false,
+      "timestampFormat": "HH:mm:ss",
+      "timestampBefore": true,
+      "timestampColor": "7",
+      "newestOnTop": false,
+      "fontScale": 0.8,
+      "tabs": [
+        {
+          "name": "会話",
+          "showAll": false,
+          "hideFromMainChat": false,
+          "filters": [
+            {
+              "type": "regex",
+              "value": "^\\s*\\[!\\]\\s*(?:Ranks, crates, boosters and bundles!|Click here to check out the store!)\\s*$",
+              "action": "HIDE",
+              "highlightColor": "f",
+              "soundId": "minecraft:block.note_block.pling",
+              "soundEnabled": false,
+              "highlightEnabled": false,
+              "priority": 0,
+              "propagationCount": 0
+            },
+            {
+              "type": "regex",
+              "value": "^[^\\r\\n»]{1,180}\\s»\\s",
+              "action": "SHOW",
+              "highlightColor": "f",
+              "soundId": "minecraft:block.note_block.pling",
+              "soundEnabled": false,
+              "highlightEnabled": false,
+              "priority": 0,
+              "propagationCount": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "x": 0,
+      "y": 112,
+      "width": 215,
+      "height": 80,
+      "isMain": false,
+      "visible": true,
+      "maxMessages": 2000,
+      "backgroundColor": "#88000000",
+      "timestampEnabled": false,
+      "timestampFormat": "HH:mm:ss",
+      "timestampBefore": true,
+      "timestampColor": "7",
+      "newestOnTop": false,
+      "fontScale": 0.8,
+      "tabs": [
+        {
+          "name": "通知",
+          "showAll": false,
+          "hideFromMainChat": false,
+          "filters": [
+            {
+              "type": "regex",
+              "value": "^\\s*\\[!\\]\\s*(?:Ranks, crates, boosters and bundles!|Click here to check out the store!)\\s*$",
+              "action": "HIDE",
+              "highlightColor": "f",
+              "soundId": "minecraft:block.note_block.pling",
+              "soundEnabled": false,
+              "highlightEnabled": false,
+              "priority": 0,
+              "propagationCount": 0
+            },
+            {
+              "type": "regex",
+              "value": "^(?![^\\r\\n»]{1,180}\\s»\\s)[\\s\\S]*$",
+              "action": "SHOW",
+              "highlightColor": "f",
+              "soundId": "minecraft:block.note_block.pling",
+              "soundEnabled": false,
+              "highlightEnabled": false,
+              "priority": 0,
+              "propagationCount": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalPrefix": "",
+  "globalSuffix": "",
+  "windowOpacity": 30,
+  "chatWheelEnabled": false,
+  "chatWindowEnabled": true,
+  "noChatClear": true,
+  "chatHidden": false,
+  "chatPreviewVisible": false,
+  "highlightPropagation": 0,
+  "autoTexts": [],
+  "playerAliases": {}
+}
