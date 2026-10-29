@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "cobblestonehelper",
+  "version": "${version}",
+  "name": "Cobblestone S17 v1",
+  "description": "S17 farm warps and client utilities for play.cobblestone.gg. Modified from Cobblestone Helper 1.4.4.",
+  "authors": [
+    "JandBDavenport"
+  ],
+  "license": "GPL-3.0-only",
+  "icon": "assets/cobblestonehelper/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.jandbdavenport.cobblestonehelper.CobblestoneHelper"
+    ]
+  },
+  "mixins": [
+    {
+      "config": "cobblestonehelper.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.17.2",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

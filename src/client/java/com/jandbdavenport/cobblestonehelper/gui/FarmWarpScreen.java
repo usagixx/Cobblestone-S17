@@ -1,0 +1,429 @@
+package com.jandbdavenport.cobblestonehelper.gui;
+
+import com.jandbdavenport.cobblestonehelper.CobblestoneHelper;
+import com.jandbdavenport.cobblestonehelper.ModConfig;
+import com.jandbdavenport.cobblestonehelper.data.FarmData;
+import com.jandbdavenport.cobblestonehelper.features.GuildQuestsManager;
+import java.util.ArrayList;
+import java.util.List;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.Drawable;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.network.ClientPlayNetworkHandler;
+import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.Util;
+import net.minecraft.util.math.MathHelper;
+
+public class FarmWarpScreen extends Screen {
+	private static final int SLOT_SIZE = 18;
+	private static final int GRID_COLS = 9;
+	private static final int GRID_START_Y = 30;
+
+	// Color palette (ARGB format - most colors now come from ModConfig)
+	private static final int COLOR_BG_INNER     = 0xFF1A1A1A;
+	private static final int COLOR_SLOT_BORDER  = 0xFF383838;
+	private static final int COLOR_TEXT_WHITE   = 0xFFFFFFFF;
+
+	// Helper method to compute accent color with semi-transparency
+	private static int getAccentMidColor() {
+		int accent = ModConfig.fwMenuColorAccent;
+		// Extract RGB and apply 50% alpha (0x80)
+		int rgb = accent & 0x00FFFFFF;
+		return 0x80000000 | rgb;
+	}
+
+	private static int getAccentDimColor() {
+		int accent = ModConfig.fwMenuColorAccent;
+		// Extract RGB and apply 25% alpha (0x40)
+		int rgb = accent & 0x00FFFFFF;
+		return 0x40000000 | rgb;
+	}
+
+	private List<CropItemWidget> cropWidgets = new ArrayList<>();
+	private List<CategoryHeader> categoryHeaders = new ArrayList<>();
+	private List<Integer> separatorYs = new ArrayList<>();
+	private int gridStartX = 0;
+	private int contentHeight = 0;
+	private int panelTop = 0;
+	private int scrollOffset = 0;
+	private int maxScroll = 0;
+
+	private record CategoryHeader(String name, int y) {}
+
+	public FarmWarpScreen() {
+		super(Text.literal("Farm Warps"));
+	}
+
+	@Override
+	protected void init() {
+		this.clearChildren();
+		this.cropWidgets.clear();
+		this.categoryHeaders.clear();
+		this.separatorYs.clear();
+
+		// Calculate grid positioning
+		int rowWidth = GRID_COLS * (SLOT_SIZE + 2) - 2;
+		this.gridStartX = (this.width - rowWidth) / 2;
+
+		// First pass: calculate total content height to determine panel size
+		int tempY = GRID_START_Y;
+		FarmData.FarmCategory[] categories = FarmData.LIST.toArray(new FarmData.FarmCategory[0]);
+		for (FarmData.FarmCategory category : categories) {
+			tempY += 15;  // Space for category label
+
+			int col = 0;
+			for (FarmData.FarmEntry entry : category.crops()) {
+				col++;
+				if (col >= GRID_COLS) {
+					col = 0;
+					tempY += SLOT_SIZE + 2;
+				}
+			}
+
+			if (col > 0) {
+				tempY += SLOT_SIZE + 2;
+			}
+			tempY += 8;
+		}
+
+		// Calculate panel top to center vertically
+		// Title section is 32px (title bar + divider), add 6px top padding
+		int titleSectionHeight = 32;
+		int contentRelativeHeight = tempY - GRID_START_Y;
+		int naturalHeight = 6 + titleSectionHeight + contentRelativeHeight + 6;
+		int panelHeight = Math.min(naturalHeight, this.height - 16);
+		maxScroll = Math.max(0, naturalHeight - panelHeight);
+		scrollOffset = MathHelper.clamp(scrollOffset, 0, maxScroll);
+		this.panelTop = (this.height - panelHeight) / 2;
+		int adjustedGridStartY = this.panelTop + 6 + titleSectionHeight - scrollOffset;
+
+		// Second pass: create widgets with adjusted positions
+		int y = adjustedGridStartY;
+
+		for (int catIndex = 0; catIndex < categories.length; catIndex++) {
+			FarmData.FarmCategory category = categories[catIndex];
+			categoryHeaders.add(new CategoryHeader(category.name(), y + 2));
+			y += 15;  // Space for category label
+
+			int col = 0;
+			int x = this.gridStartX;
+
+			for (FarmData.FarmEntry entry : category.crops()) {
+				final String commandArg = entry.commandArg();
+				final String displayName = entry.displayName();
+
+				// Create button for click area
+				ButtonWidget cropButton = ButtonWidget.builder(Text.empty(), button -> {
+					this.close();
+					executeCommand(commandArg);
+				})
+				.dimensions(x, y, SLOT_SIZE, SLOT_SIZE)
+				.build();
+
+				this.addDrawableChild(cropButton);
+				cropButton.active = y >= this.panelTop + 33 && y + SLOT_SIZE < this.panelTop + panelHeight;
+				cropButton.visible = cropButton.active;
+				String questHighlight = ModConfig.farmWarpsGuildQuestHighlight ? GuildQuestsManager.getQuestHighlightType(displayName) : "";
+				cropWidgets.add(new CropItemWidget(x, y, entry.itemId(), displayName, questHighlight));
+
+				col++;
+				if (col >= GRID_COLS) {
+					col = 0;
+					x = this.gridStartX;
+					y += SLOT_SIZE + 2;
+				} else {
+					x += SLOT_SIZE + 2;
+				}
+			}
+
+			if (col > 0) {
+				y += SLOT_SIZE + 2;
+			}
+
+			// Store separator Y if not the last category
+			if (catIndex < categories.length - 1) {
+				separatorYs.add(y);
+			}
+
+			y += 8;
+		}
+
+		this.contentHeight = this.panelTop + panelHeight;
+	}
+
+	@Override
+	public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+		super.render(context, mouseX, mouseY, delta);
+
+		// Calculate grid positioning for background
+		int rowWidth = GRID_COLS * (SLOT_SIZE + 2) - 2;
+		int panelLeft = this.gridStartX - 6;
+		int panelRight = this.gridStartX + rowWidth + 6;
+		int panelBottom = this.contentHeight;
+
+		// 1. Draw orange border (1px thick as 4 fill strips for rounded corners)
+		context.fill(panelLeft, this.panelTop, panelRight, this.panelTop + 1, ModConfig.fwMenuColorAccent); // top
+		context.fill(panelLeft, panelBottom - 1, panelRight, panelBottom, ModConfig.fwMenuColorAccent); // bottom
+		context.fill(panelLeft, this.panelTop + 1, panelLeft + 1, panelBottom - 1, ModConfig.fwMenuColorAccent); // left
+		context.fill(panelRight - 1, this.panelTop + 1, panelRight, panelBottom - 1, ModConfig.fwMenuColorAccent); // right
+
+		// 2. Draw rounded panel interior using staircase pattern for smooth corners
+		int panelW = panelRight - panelLeft;
+		int panelH = panelBottom - this.panelTop;
+		fillRounded(context, panelLeft + 1, this.panelTop + 1, panelW - 2, panelH - 2, ModConfig.fwMenuColorBackground);
+
+		// 3. Draw title bar strip (slightly lighter bg, 30px tall)
+		context.fill(panelLeft + 1, this.panelTop + 1, panelRight - 1, this.panelTop + 31, COLOR_BG_INNER);
+
+		// 4. Draw orange divider line under title bar
+		context.fill(panelLeft + 1, this.panelTop + 31, panelRight - 1, this.panelTop + 32, ModConfig.fwMenuColorAccent);
+
+		// 5. Draw gradient in content area (much more visible: light gray to very dark)
+		context.fillGradient(panelLeft + 1, this.panelTop + 32, panelRight - 1, panelBottom - 1, 0xFF2A2A2A, 0xFF0A0A0A);
+
+		// 6. Draw title text (white, centered)
+		context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, this.panelTop + 10, COLOR_TEXT_WHITE);
+
+		// 7. Draw category headers with pulsing accent bar animation
+		context.enableScissor(panelLeft + 1, this.panelTop + 33, panelRight - 1, panelBottom - 1);
+		long now = Util.getMeasuringTimeMs();
+		float pulse = (float)((Math.sin(now / 2500.0 * 2 * Math.PI) + 1) / 2); // 0→1 over 2.5s cycle
+		int accentAlpha = (int)(0xCC + 0x33 * pulse); // 0xCC (80%) → 0xFF (100%)
+		// Extract RGB from ModConfig.fwMenuColorAccent and rebuild with pulsing alpha
+		int accentRGB = ModConfig.fwMenuColorAccent & 0x00FFFFFF;
+		int accentColor = (accentAlpha << 24) | accentRGB;
+
+		for (CategoryHeader header : categoryHeaders) {
+			int headerX = this.gridStartX;
+			int headerY = header.y();
+
+			// Left accent bar (3px wide × 9px tall) with pulsing animation
+			context.fill(headerX - 7, headerY - 2, headerX - 4, headerY + 7, accentColor);
+
+			// Category name in orange
+			context.drawTextWithShadow(this.textRenderer, Text.literal(header.name()), headerX, headerY, ModConfig.fwMenuColorAccent);
+		}
+
+		// 8. Render crop item widgets (they handle their own hover states)
+		for (CropItemWidget widget : cropWidgets) {
+			widget.render(context, mouseX, mouseY, delta);
+		}
+
+		// 9. Draw separator lines between categories
+		for (Integer separatorY : separatorYs) {
+			context.fill(this.gridStartX, separatorY, this.gridStartX + rowWidth, separatorY + 1, getAccentMidColor());
+		}
+		context.disableScissor();
+	}
+
+	@Override
+	public boolean mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount) {
+		int next = MathHelper.clamp(scrollOffset - (int)(verticalAmount * 24), 0, maxScroll);
+		if (next != scrollOffset) {
+			scrollOffset = next;
+			init();
+			return true;
+		}
+		return super.mouseScrolled(mouseX, mouseY, horizontalAmount, verticalAmount);
+	}
+
+	/**
+	 * Draw a rounded rectangle with 3px radius for large UI elements.
+	 * Uses staircase fill pattern: 2-step corners → imperceptibly different from circular.
+	 */
+	private void fillRounded(DrawContext ctx, int x, int y, int w, int h, int color) {
+		// Top row (3px inset)
+		ctx.fill(x + 3, y,     x + w - 3, y + 1,     color);
+		// Top transition (2 rows, 1px inset)
+		ctx.fill(x + 1, y + 1, x + w - 1, y + 3,     color);
+		// Middle body (full width)
+		ctx.fill(x,     y + 3, x + w,     y + h - 3, color);
+		// Bottom transition (2 rows, 1px inset)
+		ctx.fill(x + 1, y + h - 3, x + w - 1, y + h - 1, color);
+		// Bottom row (3px inset)
+		ctx.fill(x + 3, y + h - 1, x + w - 3, y + h,    color);
+	}
+
+	/**
+	 * Draw a rounded rectangle with 2px radius for 18×18 item slots.
+	 * Static version for use in inner classes.
+	 */
+	private static void fillRoundedSlotStatic(DrawContext ctx, int x, int y, int w, int h, int color) {
+		// Top row (2px inset)
+		ctx.fill(x + 2, y,     x + w - 2, y + 1,     color);
+		// Middle rows (1px inset on sides)
+		ctx.fill(x + 1, y + 1, x + w - 1, y + h - 1, color);
+		// Bottom row (2px inset)
+		ctx.fill(x + 2, y + h - 1, x + w - 2, y + h, color);
+	}
+
+	private void executeCommand(String commandArg) {
+		MinecraftClient client = MinecraftClient.getInstance();
+		ClientPlayNetworkHandler networkHandler = client.getNetworkHandler();
+		if (networkHandler != null) {
+			networkHandler.sendChatCommand("warpfarm " + commandArg);
+		}
+	}
+
+	@Override
+	public void close() {
+		this.client.setScreen(null);
+	}
+
+	@Override
+	public boolean shouldCloseOnEsc() {
+		return true;
+	}
+
+	@Override
+	public boolean keyPressed(net.minecraft.client.input.KeyInput key) {
+		// Close on farm warps keybind press
+		if (CobblestoneHelper.getFarmWarpsKey().matchesKey(key)) {
+			this.close();
+			return true;
+		}
+		return super.keyPressed(key);
+	}
+
+	// Simple drawable for crop items with hover animations
+	private static class CropItemWidget implements Drawable {
+		private final int x;
+		private final int y;
+		private final ItemStack stack;
+		private final String displayName;
+		private final String questHighlight;
+
+		private long hoverEnterTime = Long.MIN_VALUE;
+		private long hoverExitTime = Long.MIN_VALUE;
+		private boolean wasHovering = false;
+
+		CropItemWidget(int x, int y, String itemId, String displayName, String questHighlight) {
+			this.x = x;
+			this.y = y;
+			this.displayName = displayName;
+			this.questHighlight = questHighlight;
+
+			ItemStack tempStack;
+			try {
+				tempStack = new ItemStack(Registries.ITEM.get(Identifier.of(itemId)));
+			} catch (Exception e) {
+				tempStack = ItemStack.EMPTY;
+			}
+			this.stack = tempStack;
+		}
+
+		@Override
+		public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+			// Check if hovering
+			boolean isHovering = mouseX >= x && mouseX < x + SLOT_SIZE && mouseY >= y && mouseY < y + SLOT_SIZE;
+
+			// Track hover state transitions
+			long now = Util.getMeasuringTimeMs();
+
+			if (isHovering && !wasHovering) {
+				hoverEnterTime = now;
+			}
+			if (!isHovering && wasHovering) {
+				hoverExitTime = now;
+			}
+			wasHovering = isHovering;
+
+			// Calculate smooth hover progress with easing [0, 1]
+			float hoverProgress = 0f;
+			if (isHovering) {
+				// Fade in over 100ms (ease-out) — only animate if hover was just triggered
+				if (hoverEnterTime > Long.MIN_VALUE + 1000000) {
+					hoverProgress = MathHelper.clamp((now - hoverEnterTime) / 100f, 0f, 1f);
+				}
+			} else {
+				// Fade out over 200ms (ease-out) — only animate if hover was just ended
+				if (hoverExitTime > Long.MIN_VALUE + 1000000) {
+					hoverProgress = 1f - MathHelper.clamp((now - hoverExitTime) / 200f, 0f, 1f);
+				}
+			}
+			// Apply ease-out easing: t = 1-(1-t)²
+			hoverProgress = 1f - (1f - hoverProgress) * (1f - hoverProgress);
+
+			// Animate border color: lerp from dark gray to accent color
+			// Extract accent RGB components
+			int accentR = (ModConfig.fwMenuColorAccent >> 16) & 0xFF;
+			int accentG = (ModConfig.fwMenuColorAccent >> 8) & 0xFF;
+			int accentB = ModConfig.fwMenuColorAccent & 0xFF;
+			int bR = (int)MathHelper.lerp(hoverProgress, 0x38, accentR);
+			int bG = (int)MathHelper.lerp(hoverProgress, 0x38, accentG);
+			int bB = (int)MathHelper.lerp(hoverProgress, 0x38, accentB);
+			int borderColor = 0xFF000000 | (bR << 16) | (bG << 8) | bB;
+
+			// Animate overlay alpha: 0 → 0x40 (25% opacity of orange)
+			int overlayAlpha = (int)(hoverProgress * 0x40);
+			int accentRGB = ModConfig.fwMenuColorAccent & 0x00FFFFFF; int overlayColor = (overlayAlpha << 24) | accentRGB;
+
+			// Handle quest highlights (crop green or boss red)
+			String questHighlightChar = "";
+			int questCharColor = 0;
+			if (!questHighlight.isEmpty()) {
+				float glowPulse = (float)((Math.sin(now / 1500.0 * 2 * Math.PI) + 1) / 2) * 0.5f + 0.5f;
+				int glowAlpha = (int)(0xFF * glowPulse);
+				int outerGlowAlpha = (int)(0x80 * glowPulse);
+				int questGlowColor;
+				int questOuterGlowColor;
+
+				if (questHighlight.equals("crop-green")) {
+					questGlowColor = (glowAlpha << 24) | 0x0055FF55; // Green with pulsing alpha
+					questOuterGlowColor = (outerGlowAlpha << 24) | 0x0055FF55;
+					questHighlightChar = "🌾"; // Crop character
+					questCharColor = questGlowColor & 0x00FFFFFF;
+				} else { // boss-red
+					questGlowColor = (glowAlpha << 24) | 0x00FF5555; // Red with pulsing alpha
+					questOuterGlowColor = (outerGlowAlpha << 24) | 0x00FF5555;
+					questHighlightChar = "💀"; // Skull character
+					questCharColor = questGlowColor & 0x00FFFFFF;
+				}
+
+				// Draw outer glow layer (thinner, more transparent)
+				context.fill(x - 1, y - 1, x + SLOT_SIZE + 1, y, questOuterGlowColor); // top
+				context.fill(x - 1, y + SLOT_SIZE, x + SLOT_SIZE + 1, y + SLOT_SIZE + 1, questOuterGlowColor); // bottom
+				context.fill(x - 1, y, x, y + SLOT_SIZE, questOuterGlowColor); // left
+				context.fill(x + SLOT_SIZE, y, x + SLOT_SIZE + 1, y + SLOT_SIZE, questOuterGlowColor); // right
+
+				// Draw inner bright outline (1px)
+				context.fill(x - 1, y - 1, x + SLOT_SIZE + 1, y - 1, questGlowColor); // top
+				context.fill(x - 1, y + SLOT_SIZE + 1, x + SLOT_SIZE + 1, y + SLOT_SIZE + 1, questGlowColor); // bottom
+				context.fill(x - 1, y, x - 1, y + SLOT_SIZE, questGlowColor); // left
+			}
+
+			// Draw simple square slot border
+			context.fill(x, y, x + SLOT_SIZE, y + SLOT_SIZE, borderColor);
+
+			// Draw square slot background
+			context.fill(x + 1, y + 1, x + SLOT_SIZE - 1, y + SLOT_SIZE - 1, ModConfig.fwMenuColorSlot);
+
+			// Draw animated overlay (only if visible)
+			if (overlayAlpha > 0) {
+				context.fill(x + 1, y + 1, x + SLOT_SIZE - 1, y + SLOT_SIZE - 1, overlayColor);
+			}
+
+			// Draw item
+			if (!stack.isEmpty()) {
+				context.drawItem(stack, x + 1, y + 1);
+			}
+
+			// Draw quest character on top (after item is drawn)
+			if (!questHighlightChar.isEmpty()) {
+				context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, Text.literal(questHighlightChar), x + SLOT_SIZE - 4, y - 4, questCharColor | 0xFF000000);
+			}
+
+			// Draw tooltip on hover
+			if (isHovering) {
+				if (!stack.isEmpty()) {
+					context.drawTooltip(MinecraftClient.getInstance().textRenderer, Text.literal(displayName), mouseX, mouseY);
+				}
+			}
+		}
+	}
+}

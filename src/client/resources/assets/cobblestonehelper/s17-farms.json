@@ -1,0 +1,257 @@
+[
+  {
+    "name": "Overworld",
+    "crops": [
+      {
+        "displayName": "Wheat",
+        "itemId": "minecraft:wheat",
+        "commandArg": "wheat"
+      },
+      {
+        "displayName": "Carrot",
+        "itemId": "minecraft:carrot",
+        "commandArg": "carrot"
+      },
+      {
+        "displayName": "Potato",
+        "itemId": "minecraft:potato",
+        "commandArg": "potato"
+      },
+      {
+        "displayName": "Beetroot",
+        "itemId": "minecraft:beetroot",
+        "commandArg": "beetroot"
+      },
+      {
+        "displayName": "Cabbage",
+        "itemId": "minecraft:dried_kelp",
+        "commandArg": "cabbage"
+      },
+      {
+        "displayName": "Pumpkin",
+        "itemId": "minecraft:pumpkin_pie",
+        "commandArg": "pumpkin"
+      },
+      {
+        "displayName": "Melon",
+        "itemId": "minecraft:melon_slice",
+        "commandArg": "melon"
+      },
+      {
+        "displayName": "Pineapple",
+        "itemId": "minecraft:honeycomb_block",
+        "commandArg": "pineapple"
+      }
+    ]
+  },
+  {
+    "name": "Frost Castle",
+    "crops": [
+      {
+        "displayName": "Froglight",
+        "itemId": "minecraft:pearlescent_froglight",
+        "commandArg": "froglight"
+      },
+      {
+        "displayName": "Pale Moss",
+        "itemId": "minecraft:pale_moss_block",
+        "commandArg": "palemoss"
+      },
+      {
+        "displayName": "Ice",
+        "itemId": "minecraft:ice",
+        "commandArg": "ice"
+      },
+      {
+        "displayName": "Bone",
+        "itemId": "minecraft:bone_block",
+        "commandArg": "bone"
+      },
+      {
+        "displayName": "Crying Obsidian",
+        "itemId": "minecraft:crying_obsidian",
+        "commandArg": "cryingobsidian"
+      },
+      {
+        "displayName": "Ochre Froglight",
+        "itemId": "minecraft:ochre_froglight",
+        "commandArg": "ochrefroglight"
+      },
+      {
+        "displayName": "Lapis",
+        "itemId": "minecraft:lapis_block",
+        "commandArg": "lapis"
+      },
+      {
+        "displayName": "Quartz",
+        "itemId": "minecraft:quartz_block",
+        "commandArg": "quartz"
+      }
+    ]
+  },
+  {
+    "name": "Swamp",
+    "crops": [
+      {
+        "displayName": "Clay",
+        "itemId": "minecraft:clay",
+        "commandArg": "clay"
+      },
+      {
+        "displayName": "Mud Bricks",
+        "itemId": "minecraft:mud_bricks",
+        "commandArg": "mudbricks"
+      },
+      {
+        "displayName": "Dried Kelp",
+        "itemId": "minecraft:dried_kelp_block",
+        "commandArg": "driedkelp"
+      },
+      {
+        "displayName": "Mangrove",
+        "itemId": "minecraft:mangrove_roots",
+        "commandArg": "mangrove"
+      },
+      {
+        "displayName": "Bamboo",
+        "itemId": "minecraft:bamboo_block",
+        "commandArg": "bamboo"
+      },
+      {
+        "displayName": "Red Mushroom",
+        "itemId": "minecraft:red_mushroom_block",
+        "commandArg": "redmushroom"
+      },
+      {
+        "displayName": "Wet Sponge",
+        "itemId": "minecraft:wet_sponge",
+        "commandArg": "wetsponge"
+      },
+      {
+        "displayName": "Verdant Froglight",
+        "itemId": "minecraft:verdant_froglight",
+        "commandArg": "verdantfroglight"
+      }
+    ]
+  },
+  {
+    "name": "Honey Tree",
+    "crops": [
+      {
+        "displayName": "Hay Bale",
+        "itemId": "minecraft:hay_block",
+        "commandArg": "haybale"
+      },
+      {
+        "displayName": "Flowering Azalea",
+        "itemId": "minecraft:flowering_azalea_leaves",
+        "commandArg": "floweringazalea"
+      },
+      {
+        "displayName": "Cherry Blossom",
+        "itemId": "minecraft:cherry_leaves",
+        "commandArg": "cherryblossom"
+      },
+      {
+        "displayName": "Bee Nest",
+        "itemId": "minecraft:bee_nest",
+        "commandArg": "beenest"
+      },
+      {
+        "displayName": "Beehive",
+        "itemId": "minecraft:beehive",
+        "commandArg": "beehive"
+      },
+      {
+        "displayName": "Resin",
+        "itemId": "minecraft:resin_block",
+        "commandArg": "resin"
+      },
+      {
+        "displayName": "Glowstone",
+        "itemId": "minecraft:glowstone",
+        "commandArg": "glowstone"
+      },
+      {
+        "displayName": "Honeycomb",
+        "itemId": "minecraft:honeycomb_block",
+        "commandArg": "honeycomb"
+      }
+    ]
+  },
+  {
+    "name": "The Library",
+    "crops": [
+      {
+        "displayName": "Red Paint",
+        "itemId": "minecraft:red_glazed_terracotta",
+        "commandArg": "redpaint"
+      },
+      {
+        "displayName": "Blue Paint",
+        "itemId": "minecraft:blue_glazed_terracotta",
+        "commandArg": "bluepaint"
+      },
+      {
+        "displayName": "Green Paint",
+        "itemId": "minecraft:green_glazed_terracotta",
+        "commandArg": "greenpaint"
+      },
+      {
+        "displayName": "Purple Paint",
+        "itemId": "minecraft:purple_glazed_terracotta",
+        "commandArg": "purplepaint"
+      },
+      {
+        "displayName": "Magenta Paint",
+        "itemId": "minecraft:magenta_glazed_terracotta",
+        "commandArg": "magentapaint"
+      },
+      {
+        "displayName": "Brown Paint",
+        "itemId": "minecraft:brown_glazed_terracotta",
+        "commandArg": "brownpaint"
+      },
+      {
+        "displayName": "Pink Paint",
+        "itemId": "minecraft:pink_glazed_terracotta",
+        "commandArg": "pinkpaint"
+      },
+      {
+        "displayName": "Black Paint",
+        "itemId": "minecraft:black_glazed_terracotta",
+        "commandArg": "blackpaint"
+      }
+    ]
+  },
+  {
+    "name": "Infernal Citadel",
+    "crops": [
+      {
+        "displayName": "Crimson Nylium",
+        "itemId": "minecraft:crimson_nylium",
+        "commandArg": "crimsonnylium"
+      },
+      {
+        "displayName": "Shroomlight",
+        "itemId": "minecraft:shroomlight",
+        "commandArg": "shroomlight"
+      },
+      {
+        "displayName": "Warped Wart",
+        "itemId": "minecraft:warped_wart_block",
+        "commandArg": "warpedwart"
+      },
+      {
+        "displayName": "Nether Quartz",
+        "itemId": "minecraft:quartz_block",
+        "commandArg": "netherquartz"
+      },
+      {
+        "displayName": "Gilded Blackstone",
+        "itemId": "minecraft:gilded_blackstone",
+        "commandArg": "gildedblackstone"
+      }
+    ]
+  }
+]
