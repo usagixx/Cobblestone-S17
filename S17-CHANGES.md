@@ -71,3 +71,7 @@ This modified source follows the repository's GPL-3.0 license (LICENSE), rather 
 ## 1.6
 - Add rebindable cookie shortcuts: 2 grandma, 3 cobbled, 5 suspicious. One command per press, disabled in menus and chat.
 
+
+## 1.6.1
+- Disable and save the vanilla tutorial step at runtime so in-memory settings cannot restore tutorial notifications.
+

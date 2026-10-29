@@ -8,7 +8,7 @@
 
 ### ダウンロード・導入
 
-**[Cobblestone S17 v1.6をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.6-portable.zip)**
+**[Cobblestone S17 v1.6.1をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.6.1-portable.zip)**
 
 動作環境：Minecraft Java Edition **1.21.11**／Fabric Loader **0.20.1**／Java **21以上**。Minecraft本体・アカウント・ランチャーは別途必要です。
 
@@ -89,6 +89,8 @@
 
 日本時間の毎時00分にだけFARMEDを読み取り、前の00分との差をHUDとローカルチャットへ `60min 100000` の形式で表示します。最初の00分は基準の記録だけを行い、次の00分から結果が出ます。履歴は `config/s17-farmed-history.tsv` に保存します。サーバー表示がK／Mなどで丸められているため、結果には丸め誤差が含まれます。切断・カウンターの減少・00分の読み取り失敗時は基準を取り直し、60分を超える区間を1時間の結果として表示しません。
 
+初回チュートリアル通知（木を倒す・板材を作る等）は自動的にOFFになります。
+
 ### その他の設定
 
 `/chconfig` から変更できます。
@@ -116,7 +118,7 @@
 
 ### Download and installation
 
-**[Download Cobblestone S17 v1.6](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.6-portable.zip)**
+**[Download Cobblestone S17 v1.6.1](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.6.1-portable.zip)**
 
 Requires Minecraft Java Edition **1.21.11**, Fabric Loader **0.20.1**, and Java **21 or later**. Minecraft, an account, and a launcher are required separately.
 
@@ -197,6 +199,8 @@ Shows the current time in Japan (JST) and the FARMED increase for the last compl
 
 FARMED is read only at minute 00 of each hour in Japan time. The difference from the previous hour is shown as `60min 100000` on the HUD and in a local-only chat report. The first minute-00 reading establishes the baseline; the next produces the first result. History is saved in `config/s17-farmed-history.tsv`. Totals may include rounding error because the server uses K/M suffixes. Disconnecting, a decreasing counter, or a missed hour-boundary reading resets the baseline. Longer intervals are never labeled as 60 minutes.
 
+First-time tutorial prompts (punching trees, crafting planks, etc.) are automatically disabled.
+
 ### Other settings
 
 Enter `/chconfig` to configure these features.
@@ -215,6 +219,7 @@ The original [Cobblestone Helper](https://github.com/JandBDavenport/Cobblestone-
 - Bundled Fabric API: Apache-2.0
 
 Full bundled license texts are in [licenses](licenses).
+
 
 
 

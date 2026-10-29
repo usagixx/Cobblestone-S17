@@ -38,6 +38,12 @@ public class CobblestoneHelper implements ClientModInitializer {
 
 		// Initialize config first
 		ModConfig.init();
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (client.options.tutorialStep != net.minecraft.client.tutorial.TutorialStep.NONE) {
+                client.getTutorialManager().setStep(net.minecraft.client.tutorial.TutorialStep.NONE);
+                client.options.write();
+            }
+        });
         com.jandbdavenport.cobblestonehelper.features.SessionStatsHud.init();
 
 		try {
@@ -151,4 +157,5 @@ public class CobblestoneHelper implements ClientModInitializer {
 		return farmWarpsKey;
 	}
 }
+
 
