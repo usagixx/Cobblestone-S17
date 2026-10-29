@@ -54,3 +54,10 @@ This modified source follows the repository's GPL-3.0 license (LICENSE), rather 
 - Mod gameplay behavior is unchanged from 1.2.
 
 - Recognize S17 MOB QUEST #1/#2 as well as legacy BOSS QUEST titles, normalize title case, support comma-separated kill counts, and wait for all four quests before finishing sync. HUD labels now use MOB.
+
+## 1.4
+- Use vanilla handling for companion chat click actions.
+- Preserve chat scroll position on reopening and new arrivals.
+- Add a dedicated GUILD chat window.
+- Add an editable JST clock and hourly estimated FARMED HUD with local TSV history.
+

@@ -14,7 +14,9 @@
     "screen.AutoRespawnMixin",
     "particles.SuppressHiddenEntityParticlesMixin",
     "rendering.MovableSidebarMixin",
-    "rendering.AllBossBarsMixin"
+    "rendering.AllBossBarsMixin",
+    "screen.ChatUtilitiesClickMixin",
+    "screen.ChatUtilitiesScrollMixin"
   ],
   "injectors": {
     "defaultRequire": 1

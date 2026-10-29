@@ -41,6 +41,7 @@ public class ModConfig {
     // Negative coordinates retain the vanilla/default anchor until moved.
     public static float sidebarX = -1, sidebarY = -1, sidebarScale = 1;
     public static float bossBarX = -1, bossBarY = -1, bossBarScale = 1;
+    public static float statsX = -1, statsY = -1, statsScale = 1;
 
 
 	// Config Menu UI colors (used for config screen styling)
@@ -101,6 +102,9 @@ public class ModConfig {
 				gqColorTarget  = getArgbColor(json, "gqColorTarget", 0xFFFFFFFF);
 				gqColorUnknown = getArgbColor(json, "gqColorUnknown", 0xFFAAAAAA);
 				gqScale = getFloat(json, "gqScale", 1.0f);
+                statsX = getFloat(json, "statsX", -1);
+                statsY = getFloat(json, "statsY", -1);
+                statsScale = Math.max(0.5f, Math.min(2, getFloat(json, "statsScale", 1)));
                 sidebarX = getFloat(json, "sidebarX", -1);
                 sidebarY = getFloat(json, "sidebarY", -1);
                 sidebarScale = Math.max(0.5f, Math.min(2, getFloat(json, "sidebarScale", 1)));
@@ -174,6 +178,9 @@ public class ModConfig {
 			json.addProperty("gqColorTarget", String.format("%08X", gqColorTarget));
 			json.addProperty("gqColorUnknown", String.format("%08X", gqColorUnknown));
 			json.addProperty("gqScale", gqScale);
+            json.addProperty("statsX", statsX);
+            json.addProperty("statsY", statsY);
+            json.addProperty("statsScale", statsScale);
             json.addProperty("sidebarX", sidebarX);
             json.addProperty("sidebarY", sidebarY);
             json.addProperty("sidebarScale", sidebarScale);
@@ -223,3 +230,4 @@ public class ModConfig {
 		}
 	}
 }
+

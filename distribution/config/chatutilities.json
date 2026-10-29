@@ -2,8 +2,8 @@
   "windows": [
     {
       "x": 0,
-      "y": 175,
-      "width": 215,
+      "y": 176,
+      "width": 214,
       "height": 80,
       "isMain": true,
       "visible": true,
@@ -21,6 +21,17 @@
           "showAll": false,
           "hideFromMainChat": false,
           "filters": [
+            {
+              "type": "regex",
+              "value": "(?i)^\\s*GUILD\\s*[•·]\\s*[^\\r\\n»]+\\s»\\s",
+              "action": "HIDE",
+              "highlightColor": "f",
+              "soundId": "minecraft:block.note_block.pling",
+              "soundEnabled": false,
+              "highlightEnabled": false,
+              "priority": 0,
+              "propagationCount": 0
+            },
             {
               "type": "regex",
               "value": "^\\s*\\[!\\]\\s*(?:Ranks, crates, boosters and bundles!|Click here to check out the store!)\\s*$",
@@ -81,6 +92,17 @@
           "filters": [
             {
               "type": "regex",
+              "value": "(?i)^\\s*GUILD\\s*[•·]\\s*[^\\r\\n»]+\\s»\\s",
+              "action": "HIDE",
+              "highlightColor": "f",
+              "soundId": "minecraft:block.note_block.pling",
+              "soundEnabled": false,
+              "highlightEnabled": false,
+              "priority": 0,
+              "propagationCount": 0
+            },
+            {
+              "type": "regex",
               "value": "^\\s*\\[!\\]\\s*(?:Ranks, crates, boosters and bundles!|Click here to check out the store!)\\s*$",
               "action": "HIDE",
               "highlightColor": "f",
@@ -104,6 +126,42 @@
             {
               "type": "regex",
               "value": "^(?!(?:[^\\r\\n»]{1,180}\\s»\\s|\\s*\\[\\+\\]\\s+\\S[^\\r\\n]*\\s*$))[\\s\\S]*$",
+              "action": "SHOW",
+              "highlightColor": "f",
+              "soundId": "minecraft:block.note_block.pling",
+              "soundEnabled": false,
+              "highlightEnabled": false,
+              "priority": 0,
+              "propagationCount": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "x": 266,
+      "y": 176,
+      "width": 214,
+      "height": 80,
+      "isMain": false,
+      "visible": true,
+      "maxMessages": 2000,
+      "backgroundColor": "#88000000",
+      "timestampEnabled": false,
+      "timestampFormat": "HH:mm:ss",
+      "timestampBefore": true,
+      "timestampColor": "7",
+      "newestOnTop": false,
+      "fontScale": 0.8,
+      "tabs": [
+        {
+          "name": "GC",
+          "showAll": false,
+          "hideFromMainChat": false,
+          "filters": [
+            {
+              "type": "regex",
+              "value": "(?i)^\\s*GUILD\\s*[•·]\\s*[^\\r\\n»]+\\s»\\s",
               "action": "SHOW",
               "highlightColor": "f",
               "soundId": "minecraft:block.note_block.pling",

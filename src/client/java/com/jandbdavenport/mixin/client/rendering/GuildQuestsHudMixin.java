@@ -17,5 +17,7 @@ public class GuildQuestsHudMixin {
 	@Inject(method = "render", at = @At("TAIL"))
 	private void renderGuildQuestsHud(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
 		GuildQuestsManager.renderHud(context);
+        com.jandbdavenport.cobblestonehelper.features.SessionStatsHud.render(context);
 	}
 }
+

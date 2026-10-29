@@ -8,7 +8,7 @@
 
 ### ダウンロード・導入
 
-**[Cobblestone S17 v1.3をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.3-portable.zip)**
+**[Cobblestone S17 v1.4をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.4-portable.zip)**
 
 動作環境：Minecraft Java Edition **1.21.11**／Fabric Loader **0.20.1**／Java **21以上**。Minecraft本体・アカウント・ランチャーは別途必要です。
 
@@ -61,12 +61,15 @@
 
 ### チャットの振り分け
 
-同梱のChat Utilitiesと設定で、チャットを2つに分けます。
+同梱のChat Utilitiesと設定で、チャットを3つに分けます。
 
 | チャット欄 | 表示する内容 |
 |---|---|
 | 下の「会話」 | プレイヤーの会話、全プレイヤーの `[+] 名前` 参加通知 |
 | 上の「通知」 | 上記以外のサーバー通知 |
+| 右の「GC」 | 行頭が GUILD • のギルドチャット。他の欄には重複表示しません |
+
+募集ボタンなどはMinecraft標準のクリック処理で動作します。過去ログを読んでいる間は新着で表示位置を動かさず、開き直しても位置を保ちます。最下部へ戻るには下方向へスクロールしてください。
 
 サーバーのTIP、スタッフ募集、単独の募集用Discordリンク、空行、次のストア宣伝は両方の欄で非表示にします。
 
@@ -75,7 +78,13 @@
 
 通常の会話本文に同じ語句やURLが含まれていても、この非表示ルールの対象にはしません。書式で分類するため、未対応の会話は通知欄に入る場合があります。
 
-同梱設定の文字倍率は両方 **0.8**。会話欄は X=0／Y=175、通知欄は X=0／Y=112、どちらも幅215・高さ80です。画面サイズに合わせて調整してください。
+同梱設定の文字倍率は両方 **0.8**。会話欄は X=0／Y=176（幅214・高さ80）、通知欄は X=0／Y=112（幅215・高さ80）、GC欄は X=266／Y=176（幅214・高さ80）です。画面サイズに合わせて調整してください。
+
+### 日本時間・1時間ごとのFARMED
+
+日本時間（JST）の現在時刻と、直前に計測を完了した1時間のFARMED増加量を表示します。右Shift → **Clock / FARMED** で位置・サイズを調整できます。
+
+計測はFARMEDを読み取った時点から始まり、1時間ごとに結果をHUDとローカルチャットへ表示します。履歴は `config/s17-farmed-history.tsv` に保存します。サーバー表示がK／Mなどで丸められているため、結果は概算（`~`）です。切断・カウンターの減少・5分以上の読み取り中断時は計測し直します。
 
 ### その他の設定
 
@@ -104,7 +113,7 @@
 
 ### Download and installation
 
-**[Download Cobblestone S17 v1.3](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.3-portable.zip)**
+**[Download Cobblestone S17 v1.4](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.4-portable.zip)**
 
 Requires Minecraft Java Edition **1.21.11**, Fabric Loader **0.20.1**, and Java **21 or later**. Minecraft, an account, and a launcher are required separately.
 
@@ -157,12 +166,15 @@ All received boss bars are displayed with automatic scaling and multiple columns
 
 ### Chat routing
 
-The bundled Chat Utilities mod and configuration separate messages into two windows.
+The bundled Chat Utilities mod and configuration separate messages into three windows.
 
 | Window | Messages |
 |---|---|
 | Lower conversation window | Player conversations and every player's `[+] Name` join notification |
 | Upper notification window | Other server notifications |
+| Right-hand GC window | Guild messages starting with GUILD •, excluded from the other windows |
+
+Recruitment buttons use standard Minecraft click handling. New messages keep your place while reading older messages, including after reopening chat. Scroll downward to return to the newest messages.
 
 Server TIPs, staff recruitment messages, standalone recruitment Discord links, blank lines, and these store promotions are hidden in both windows:
 
@@ -171,7 +183,13 @@ Server TIPs, staff recruitment messages, standalone recruitment Discord links, b
 
 Regular player conversations containing the same words or URLs are excluded from these hide rules. Routing depends on message format, so unsupported conversation formats may appear in the notification window.
 
-Both bundled font scales are **0.8**. Conversation position: X=0, Y=175. Notification position: X=0, Y=112. Both windows are 215 wide and 80 high. Adjust the layout for your screen size.
+Both bundled font scales are **0.8**. Conversation: X=0, Y=176, size 214×80. Notifications: X=0, Y=112, size 215×80. GC: X=266, Y=176, size 214×80. Adjust the layout for your screen size.
+
+### Japan time and hourly FARMED
+
+Shows the current time in Japan (JST) and the FARMED increase for the last completed measurement hour. Move or resize it using Right Shift → **Clock / FARMED**.
+
+Measurement begins with the first readable FARMED value. Each completed hour updates the HUD and posts a local-only chat report. History is saved in `config/s17-farmed-history.tsv`. Totals are estimates (`~`) because the server rounds values using K/M suffixes. Disconnecting, a decreasing counter, or a sampling gap longer than five minutes starts a new measurement. The first result appears after one full hour.
 
 ### Other settings
 
@@ -191,3 +209,7 @@ The original [Cobblestone Helper](https://github.com/JandBDavenport/Cobblestone-
 - Bundled Fabric API: Apache-2.0
 
 Full bundled license texts are in [licenses](licenses).
+
+
+
+

@@ -38,6 +38,7 @@ public class CobblestoneHelper implements ClientModInitializer {
 
 		// Initialize config first
 		ModConfig.init();
+        com.jandbdavenport.cobblestonehelper.features.SessionStatsHud.init();
 
 		try {
 			// Create custom keybinding category
@@ -149,3 +150,4 @@ public class CobblestoneHelper implements ClientModInitializer {
 		return farmWarpsKey;
 	}
 }
+
