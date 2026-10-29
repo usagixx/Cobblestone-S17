@@ -1,4 +1,4 @@
-# Cobblestone S17 v1 (1.0.0+s17)
+# Cobblestone S17 version 1.2
 
 Minecraft 1.21.11 / Fabric / Java 21. Based on Cobblestone Helper 1.4.4 by JandBDavenport (commit 36830363a78c44c735070476eadb35b9221f9198).
 
@@ -21,7 +21,7 @@ The old guild quest parser and boss-to-crop mappings are retained; S17 compatibi
 
 ## Build
 
-Set JAVA_HOME to a Java 21 JDK and run gradlew.bat build. Runtime JAR: build/libs/cobblestone-s17-1.0.0+s17.jar.
+Set JAVA_HOME to a Java 21 JDK and run gradlew.bat build. Runtime JAR: build/libs/cobblestone-s17-1.2.jar.
 
 ## Licensing / credits
 
@@ -39,4 +39,11 @@ This modified source follows the repository's GPL-3.0 license (LICENSE), rather 
 - Sidebar uses the vanilla renderer with its formatted server text and scores preserved.
 - Boss bars render every received entry. A grid and adaptive scale replace vanilla's screen-height cutoff; 216 geometry cases were checked.
 - Coordinates and sizes persist in the existing helper configuration. Server-side objectives and gameplay are unchanged.
+
+## 1.1.1+s17
+- Stable boss-bar priority: Celestial, weather (including Shimmering Night), Global, Cookie, then remaining entries in server order. Every received bar remains visible.
+- Distribution chat configuration retains the user's adjusted layout and font sizes, routes [+] join messages to conversation, and hides server TIP/staff recruitment messages in both windows.
+
+## 1.2
+- Release name: Cobblestone S17. Version: 1.2. Includes all changes listed above.
 

@@ -4,6 +4,15 @@
 
 ## 日本語
 
+### v1.2の更新内容
+
+- ボスバーを「セレスティアル → ウェザー → グローバル → クッキー → その他」の優先順で表示します。同じ優先度ではサーバーの順番を保持します。
+- `[+] 名前` の参加通知を会話欄に表示します。
+- サーバーのTIP・スタッフ募集・単独の募集用Discordリンク・空行を両方のチャット欄で非表示にします。通常の会話本文は対象外です。
+- チャット欄の位置・サイズ・文字サイズ・透明度を調整しました。
+
+[v1.2をダウンロード](distribution/Cobblestone-S17-v1.2-portable.zip) · [導入手順](distribution/README-はじめに.txt)
+
 Minecraft Java版の **play.cobblestone.gg** 向けに、Cobblestone HelperをS17用へ改変したクライアントMODです。  
 **Minecraft 1.21.11／Fabric** に対応しています。
 
@@ -16,6 +25,7 @@ Minecraft Java版の **play.cobblestone.gg** 向けに、Cobblestone HelperをS1
 | `R` | `/wf` | 農場選択画面を開く |
 | `H` | — | ほかのプレイヤーの表示・非表示を切り替える |
 | — | `/chconfig` | MODの設定画面を開く |
+| — | `/s17chattest` | 自分の画面だけにテストメッセージを表示し、チャットの振り分けを確認する |
 | 右Shift | `/s17hud` | HUDの位置・サイズを編集する |
 | — | `/guild` | サーバーのギルド画面を開き、クエスト情報を同期する |
 
@@ -75,6 +85,15 @@ Minecraft Java版の **play.cobblestone.gg** 向けに、Cobblestone HelperをS1
 
 ## English
 
+### What is new in v1.2
+
+- Boss bars are sorted by priority: Celestial → Weather → Global → Cookie → Others. Server order is preserved within each priority group.
+- `[+] Name` join notifications appear in the conversation window.
+- Server TIPs, staff recruitment messages, standalone recruitment Discord links, and blank lines are hidden in both chat windows. Regular player conversations are excluded from these hide rules.
+- Updated chat window positions, sizes, font sizes, and opacity.
+
+[Download v1.2](distribution/Cobblestone-S17-v1.2-portable.zip)
+
 A client-side modification of Cobblestone Helper updated for S17 on **play.cobblestone.gg** in Minecraft Java Edition.  
 Supports **Minecraft 1.21.11 / Fabric**.
 
@@ -87,6 +106,7 @@ Enter a command in chat or press the corresponding key.
 | `R` | `/wf` | Open the farm selection screen |
 | `H` | — | Toggle visibility of other players |
 | — | `/chconfig` | Open the mod settings screen |
+| — | `/s17chattest` | Preview chat routing with local-only test messages; nothing is broadcast |
 | Right Shift | `/s17hud` | Edit HUD positions and sizes |
 | — | `/guild` | Open the server's guild screen to sync quest information |
 
@@ -141,3 +161,4 @@ Messages are classified by their format. Unsupported conversation formats may ap
 The original **Cobblestone Helper** was created by **JandBDavenport**.
 
 This mod is a modified version and is not an official Cobblestone server mod. The original code and modifications are licensed under GPL-3.0.
+

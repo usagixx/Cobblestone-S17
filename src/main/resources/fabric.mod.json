@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "cobblestonehelper",
   "version": "${version}",
-  "name": "Cobblestone S17 v1",
+  "name": "Cobblestone S17",
   "description": "S17 farm warps and client utilities for play.cobblestone.gg. Modified from Cobblestone Helper 1.4.4.",
   "authors": [
     "JandBDavenport"

@@ -1,6 +1,7 @@
 package com.jandbdavenport.mixin.client.rendering;
 
 import com.jandbdavenport.cobblestonehelper.features.HudLayout;
+import com.jandbdavenport.cobblestonehelper.features.BossBarPriority;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.BossBarHud;
@@ -14,6 +15,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Map;
 import java.util.UUID;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 /** Render every received bar; vanilla stops when its stack reaches one third of the screen. */
 @Mixin(BossBarHud.class)
@@ -25,6 +28,8 @@ public class AllBossBarsMixin {
     private void s17$renderAll(DrawContext context, CallbackInfo ci) {
         ci.cancel();
         var font = MinecraftClient.getInstance().textRenderer;
+        var orderedBars = new ArrayList<>(bossBars.values());
+        orderedBars.sort(Comparator.comparingInt(bar -> BossBarPriority.rank(bar.getName().getString())));
         int cellWidth = 190;
         for (var bar : bossBars.values()) cellWidth = Math.max(cellWidth, font.getWidth(bar.getName()) + 8);
         var layout = HudLayout.bossLayout(bossBars.size(), cellWidth);
@@ -34,7 +39,7 @@ public class AllBossBarsMixin {
         context.getMatrices().translate(layout.bounds().x(), layout.bounds().y());
         context.getMatrices().scale(layout.scale(), layout.scale());
         int i = 0;
-        for (var bar : bossBars.values()) {
+        for (var bar : orderedBars) {
             int column = i / layout.rows(), row = i % layout.rows();
             int center = column * layout.cellWidth() + layout.cellWidth() / 2;
             int top = row * 19;
