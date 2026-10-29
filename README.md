@@ -8,7 +8,7 @@
 
 ### ダウンロード・導入
 
-**[Cobblestone S17 v1.4をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.4-portable.zip)**
+**[Cobblestone S17 v1.5をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.5-portable.zip)**
 
 動作環境：Minecraft Java Edition **1.21.11**／Fabric Loader **0.20.1**／Java **21以上**。Minecraft本体・アカウント・ランチャーは別途必要です。
 
@@ -84,7 +84,7 @@
 
 日本時間（JST）の現在時刻と、直前に計測を完了した1時間のFARMED増加量を表示します。右Shift → **Clock / FARMED** で位置・サイズを調整できます。
 
-計測はFARMEDを読み取った時点から始まり、1時間ごとに結果をHUDとローカルチャットへ表示します。履歴は `config/s17-farmed-history.tsv` に保存します。サーバー表示がK／Mなどで丸められているため、結果は概算（`~`）です。切断・カウンターの減少・5分以上の読み取り中断時は計測し直します。
+日本時間の毎時00分にだけFARMEDを読み取り、前の00分との差をHUDとローカルチャットへ `60min 100000` の形式で表示します。最初の00分は基準の記録だけを行い、次の00分から結果が出ます。履歴は `config/s17-farmed-history.tsv` に保存します。サーバー表示がK／Mなどで丸められているため、結果には丸め誤差が含まれます。切断・カウンターの減少・00分の読み取り失敗時は基準を取り直し、60分を超える区間を1時間の結果として表示しません。
 
 ### その他の設定
 
@@ -113,7 +113,7 @@
 
 ### Download and installation
 
-**[Download Cobblestone S17 v1.4](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.4-portable.zip)**
+**[Download Cobblestone S17 v1.5](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.5-portable.zip)**
 
 Requires Minecraft Java Edition **1.21.11**, Fabric Loader **0.20.1**, and Java **21 or later**. Minecraft, an account, and a launcher are required separately.
 
@@ -189,7 +189,7 @@ Both bundled font scales are **0.8**. Conversation: X=0, Y=176, size 214×80. No
 
 Shows the current time in Japan (JST) and the FARMED increase for the last completed measurement hour. Move or resize it using Right Shift → **Clock / FARMED**.
 
-Measurement begins with the first readable FARMED value. Each completed hour updates the HUD and posts a local-only chat report. History is saved in `config/s17-farmed-history.tsv`. Totals are estimates (`~`) because the server rounds values using K/M suffixes. Disconnecting, a decreasing counter, or a sampling gap longer than five minutes starts a new measurement. The first result appears after one full hour.
+FARMED is read only at minute 00 of each hour in Japan time. The difference from the previous hour is shown as `60min 100000` on the HUD and in a local-only chat report. The first minute-00 reading establishes the baseline; the next produces the first result. History is saved in `config/s17-farmed-history.tsv`. Totals may include rounding error because the server uses K/M suffixes. Disconnecting, a decreasing counter, or a missed hour-boundary reading resets the baseline. Longer intervals are never labeled as 60 minutes.
 
 ### Other settings
 
@@ -209,6 +209,7 @@ The original [Cobblestone Helper](https://github.com/JandBDavenport/Cobblestone-
 - Bundled Fabric API: Apache-2.0
 
 Full bundled license texts are in [licenses](licenses).
+
 
 
 

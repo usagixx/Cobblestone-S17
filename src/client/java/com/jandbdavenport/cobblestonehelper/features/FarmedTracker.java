@@ -3,22 +3,20 @@ package com.jandbdavenport.cobblestonehelper.features;
 import java.util.OptionalLong;
 import java.util.regex.Pattern;
 
-/** Pure counter logic; an hour starts with the first usable server sample. */
+/** Compare samples taken at consecutive wall-clock hour boundaries. */
 public final class FarmedTracker {
     public static final long HOUR = 3_600_000;
     private static final Pattern NUMBER = Pattern.compile("([0-9]+(?:[,.][0-9]+)*)\\s*([KMBT]?)", Pattern.CASE_INSENSITIVE);
     public record Result(long start, long end, long amount) {}
-    private long start = -1, baseline, previous, lastSample = -1;
-    public void reset() { start = lastSample = -1; }
+    private long start = -1, previous, lastHour = -1;
+    public void reset() { start = lastHour = -1; }
     public long startedAt() { return start; }
     public Result sample(long value, long now) {
-        if (start < 0 || now < lastSample || now - lastSample > 300_000 || value < previous) {
-            start = now; baseline = value;
-        }
-        previous = value; lastSample = now;
-        if (now - start < HOUR) return null;
-        Result result = new Result(start, now, value - baseline);
-        start = now; baseline = value;
+        long hour = Math.floorDiv(now, HOUR);
+        if (hour == lastHour) return null;
+        Result result = start >= 0 && hour == lastHour + 1 && value >= previous
+            ? new Result(start, hour * HOUR, value - previous) : null;
+        start = hour * HOUR; previous = value; lastHour = hour;
         return result;
     }
     public static OptionalLong parse(String line) {

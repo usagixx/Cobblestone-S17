@@ -61,3 +61,9 @@ This modified source follows the repository's GPL-3.0 license (LICENSE), rather 
 - Add a dedicated GUILD chat window.
 - Add an editable JST clock and hourly estimated FARMED HUD with local TSV history.
 
+
+## 1.5
+- Read FARMED only at minute 00, once per hour, and compare consecutive hour boundaries.
+- Display the last completed result as 60min 100000, without a range or approximation prefix.
+- Missing boundaries, disconnects and counter resets do not produce misleading hourly totals.
+
