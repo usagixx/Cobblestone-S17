@@ -34,7 +34,18 @@
             },
             {
               "type": "regex",
-              "value": "^[^\\r\\n»]{1,180}\\s»\\s",
+              "value": "(?is)^\\s*(?:TIP\\s*:|We're\\s+currently\\s+looking\\s+for\\s+potential\\s+staff\\s+members\\b|https?://(?:www\\.)?discord\\.gg/cobble/?\\s*$|$)",
+              "action": "HIDE",
+              "highlightColor": "f",
+              "soundId": "minecraft:block.note_block.pling",
+              "soundEnabled": false,
+              "highlightEnabled": false,
+              "priority": 0,
+              "propagationCount": 0
+            },
+            {
+              "type": "regex",
+              "value": "^(?:[^\\r\\n»]{1,180}\\s»\\s|\\s*\\[\\+\\]\\s+\\S[^\\r\\n]*\\s*$)",
               "action": "SHOW",
               "highlightColor": "f",
               "soundId": "minecraft:block.note_block.pling",
@@ -81,7 +92,18 @@
             },
             {
               "type": "regex",
-              "value": "^(?![^\\r\\n»]{1,180}\\s»\\s)[\\s\\S]*$",
+              "value": "(?is)^\\s*(?:TIP\\s*:|We're\\s+currently\\s+looking\\s+for\\s+potential\\s+staff\\s+members\\b|https?://(?:www\\.)?discord\\.gg/cobble/?\\s*$|$)",
+              "action": "HIDE",
+              "highlightColor": "f",
+              "soundId": "minecraft:block.note_block.pling",
+              "soundEnabled": false,
+              "highlightEnabled": false,
+              "priority": 0,
+              "propagationCount": 0
+            },
+            {
+              "type": "regex",
+              "value": "^(?!(?:[^\\r\\n»]{1,180}\\s»\\s|\\s*\\[\\+\\]\\s+\\S[^\\r\\n]*\\s*$))[\\s\\S]*$",
               "action": "SHOW",
               "highlightColor": "f",
               "soundId": "minecraft:block.note_block.pling",
