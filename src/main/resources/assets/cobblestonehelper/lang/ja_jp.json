@@ -1,3 +1,6 @@
 {
-  "key.cobblestonehelper.hudeditor": "HUDの位置・大きさを編集"
+  "key.cobblestonehelper.hudeditor": "HUDの位置・大きさを編集",
+  "key.cobblestonehelper.cookie.grandma": "クッキー使用: grandma",
+  "key.cobblestonehelper.cookie.cobbled": "クッキー使用: cobbled",
+  "key.cobblestonehelper.cookie.suspicious": "クッキー使用: suspicious"
 }

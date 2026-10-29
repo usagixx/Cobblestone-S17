@@ -8,7 +8,7 @@
 
 ### ダウンロード・導入
 
-**[Cobblestone S17 v1.5をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.5-portable.zip)**
+**[Cobblestone S17 v1.6をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.6-portable.zip)**
 
 動作環境：Minecraft Java Edition **1.21.11**／Fabric Loader **0.20.1**／Java **21以上**。Minecraft本体・アカウント・ランチャーは別途必要です。
 
@@ -24,13 +24,16 @@
 | キー | チャットに入力するコマンド | 動作 |
 |---|---|---|
 | `R` | `/wf` | 農場を選んでワープ |
-| `H` | — | ほかのプレイヤーを表示／非表示 |
+| H | — | ほかのプレイヤーを表示／非表示 |
+| 2 | /cookie grandma | Grandmaクッキーを使用 |
+| 3 | /cookie cobbled | Cobbledクッキーを使用 |
+| 5 | /cookie suspicious | Suspiciousクッキーを使用 |
 | 右Shift | `/s17hud` | HUDの位置・サイズを編集 |
 | — | `/chconfig` | MOD設定を開く |
 | — | `/guild` | ギルド画面を開く。クエスト画面まで進むとHUDに同期 |
 | — | `/s17chattest` | チャットの振り分けをテスト。自分の画面だけに表示 |
 
-`/guild` はサーバー側のコマンドです。
+`/guild` と `/cookie` はサーバー側のコマンドです。クッキーキーはチャット・メニューを開いている間は反応せず、長押ししても連打しません。数字キーはホットバー選択と競合するため、必要に応じて操作設定で割り当てを変更してください。
 
 ### 農場ワープ
 
@@ -113,7 +116,7 @@
 
 ### Download and installation
 
-**[Download Cobblestone S17 v1.5](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.5-portable.zip)**
+**[Download Cobblestone S17 v1.6](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.6-portable.zip)**
 
 Requires Minecraft Java Edition **1.21.11**, Fabric Loader **0.20.1**, and Java **21 or later**. Minecraft, an account, and a launcher are required separately.
 
@@ -129,13 +132,16 @@ Includes Cobblestone S17, Fabric API, Chat Utilities, chat configuration, corres
 | Key | Command to enter in chat | Action |
 |---|---|---|
 | `R` | `/wf` | Select a farm and warp |
-| `H` | — | Show/hide other players |
+| H | — | Show/hide other players |
+| 2 | /cookie grandma | Use Grandma cookie |
+| 3 | /cookie cobbled | Use Cobbled cookie |
+| 5 | /cookie suspicious | Use Suspicious cookie |
 | Right Shift | `/s17hud` | Edit HUD positions and sizes |
 | — | `/chconfig` | Open mod settings |
 | — | `/guild` | Open the guild menu; enter the quest screen to sync the HUD |
 | — | `/s17chattest` | Preview chat routing locally; nothing is broadcast |
 
-`/guild` is a server command.
+`/guild` and `/cookie` are server commands. Cookie shortcuts are inactive in chat and menus and do not repeat while held. Number keys conflict with hotbar selection; rebind them in Controls if needed.
 
 ### Farm warps
 
@@ -209,6 +215,7 @@ The original [Cobblestone Helper](https://github.com/JandBDavenport/Cobblestone-
 - Bundled Fabric API: Apache-2.0
 
 Full bundled license texts are in [licenses](licenses).
+
 
 
 

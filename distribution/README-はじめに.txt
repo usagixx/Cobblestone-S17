@@ -1,4 +1,4 @@
-Cobblestone S17 v1.5 — 別PCへの導入
+Cobblestone S17 v1.6 — 別PCへの導入
 
 対象: Minecraft Java Edition 1.21.11 / Fabric Loader 0.20.1 / Java 21以上
 Minecraft本体・アカウント・ランチャーは別途必要です。
@@ -30,7 +30,7 @@ HUDの位置・大きさは別PCの画面に合わせて初期値から調整で
 未対応の会話書式は通知側に表示されることがあります。
 
 同梱:
-  Cobblestone S17 1.5（改変MOD）
+  Cobblestone S17 1.6（改変MOD）
   Fabric API 0.141.6+1.21.11
   Chat Utilities 2.2.3
   会話/通知分離設定、改変MODの対応ソース、ライセンス
@@ -55,4 +55,7 @@ Chat Utilities: https://modrinth.com/mod/chat-utilities
 
 
 FARMEDは日本時間の毎時00分に1回読み取り、前回00分との差を60min 100000形式で表示します。最初の00分は基準記録、次の00分から結果表示です。
+
+
+クッキー: 2=/cookie grandma、3=/cookie cobbled、5=/cookie suspicious。操作設定で変更できます。チャット・メニュー中は無効、長押し連打なし。
 

@@ -67,3 +67,7 @@ This modified source follows the repository's GPL-3.0 license (LICENSE), rather 
 - Display the last completed result as 60min 100000, without a range or approximation prefix.
 - Missing boundaries, disconnects and counter resets do not produce misleading hourly totals.
 
+
+## 1.6
+- Add rebindable cookie shortcuts: 2 grandma, 3 cobbled, 5 suspicious. One command per press, disabled in menus and chat.
+

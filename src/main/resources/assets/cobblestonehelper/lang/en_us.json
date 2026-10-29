@@ -2,5 +2,8 @@
   "key.category.cobblestonehelper.category": "Cobblestone Helper",
   "key.cobblestonehelper.hideplayers": "Toggle Hide Players",
   "key.cobblestonehelper.farmwarps": "Open Farm Warps",
-  "key.cobblestonehelper.hudeditor": "Edit HUD Layout"
+  "key.cobblestonehelper.hudeditor": "Edit HUD Layout",
+  "key.cobblestonehelper.cookie.grandma": "Use cookie: grandma",
+  "key.cobblestonehelper.cookie.cobbled": "Use cookie: cobbled",
+  "key.cobblestonehelper.cookie.suspicious": "Use cookie: suspicious"
 }

@@ -43,6 +43,7 @@ public class CobblestoneHelper implements ClientModInitializer {
 		try {
 			// Create custom keybinding category
 			customCategory = new KeyBinding.Category(Identifier.of(MOD_ID, "category"));
+			com.jandbdavenport.cobblestonehelper.features.CookieKeys.init(customCategory);
 			System.out.println("[CobblestoneHelper] ✓ Created keybinding category");
 
 			// Register keybinds
