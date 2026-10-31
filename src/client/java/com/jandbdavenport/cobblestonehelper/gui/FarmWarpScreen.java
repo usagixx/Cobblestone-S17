@@ -52,6 +52,8 @@ public class FarmWarpScreen extends Screen {
 	private int panelTop = 0;
 	private int scrollOffset = 0;
 	private int maxScroll = 0;
+    private List<net.minecraft.text.OrderedText> combatLines = List.of();
+    private int combatY;
 
 	private record CategoryHeader(String name, int y) {}
 
@@ -71,7 +73,13 @@ public class FarmWarpScreen extends Screen {
 		this.gridStartX = (this.width - rowWidth) / 2;
 
 		// First pass: calculate total content height to determine panel size
-		int tempY = GRID_START_Y;
+        var combat = new ArrayList<net.minecraft.text.OrderedText>();
+        for (String line : GuildQuestsManager.getCombatQuestLines()) {
+            combat.addAll(textRenderer.wrapLines(Text.literal(line), rowWidth));
+        }
+        combatLines = List.copyOf(combat);
+        int combatHeight = 15 + combatLines.size() * 11 + 8;
+		int tempY = GRID_START_Y + combatHeight;
 		FarmData.FarmCategory[] categories = FarmData.LIST.toArray(new FarmData.FarmCategory[0]);
 		for (FarmData.FarmCategory category : categories) {
 			tempY += 15;  // Space for category label
@@ -104,6 +112,10 @@ public class FarmWarpScreen extends Screen {
 
 		// Second pass: create widgets with adjusted positions
 		int y = adjustedGridStartY;
+        categoryHeaders.add(new CategoryHeader("Combat Quests", y + 2));
+        combatY = y + 15;
+        y += combatHeight;
+        separatorYs.add(y - 4);
 
 		for (int catIndex = 0; catIndex < categories.length; catIndex++) {
 			FarmData.FarmCategory category = categories[catIndex];
@@ -209,6 +221,9 @@ public class FarmWarpScreen extends Screen {
 			context.drawTextWithShadow(this.textRenderer, Text.literal(header.name()), headerX, headerY, ModConfig.fwMenuColorAccent);
 		}
 
+        for (int i = 0; i < combatLines.size(); i++) {
+            context.drawTextWithShadow(textRenderer, combatLines.get(i), gridStartX, combatY + i * 11, COLOR_TEXT_WHITE);
+        }
 		// 8. Render crop item widgets (they handle their own hover states)
 		for (CropItemWidget widget : cropWidgets) {
 			widget.render(context, mouseX, mouseY, delta);

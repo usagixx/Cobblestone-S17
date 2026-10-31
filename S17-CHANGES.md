@@ -75,3 +75,7 @@ This modified source follows the repository's GPL-3.0 license (LICENSE), rather 
 ## 1.6.1
 - Disable and save the vanilla tutorial step at runtime so in-memory settings cannot restore tutorial notifications.
 
+
+## 1.7
+- Display both synced combat quest objectives and completion state above farms in the R menu, with wrapped text and scrolling.
+

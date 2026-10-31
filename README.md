@@ -8,7 +8,7 @@
 
 ### ダウンロード・導入
 
-**[Cobblestone S17 v1.6.1をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.6.1-portable.zip)**
+**[Cobblestone S17 v1.7をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.7-portable.zip)**
 
 動作環境：Minecraft Java Edition **1.21.11**／Fabric Loader **0.20.1**／Java **21以上**。Minecraft本体・アカウント・ランチャーは別途必要です。
 
@@ -38,6 +38,8 @@
 ### 農場ワープ
 
 `R` または `/wf` で農場選択画面を開き、S17の作物一覧から行き先を選びます。小さい画面ではスクロールして選択できます。
+
+Rの画面上部の **Combat Quests** に、同期済みの討伐クエスト2件を表示します。討伐数・対象名と完了状態を確認できます。未同期の場合は `/guild` からクエスト画面を開いてください。この欄は対象の確認用です。
 
 ### ギルドクエストHUD
 
@@ -118,7 +120,7 @@
 
 ### Download and installation
 
-**[Download Cobblestone S17 v1.6.1](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.6.1-portable.zip)**
+**[Download Cobblestone S17 v1.7](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.7-portable.zip)**
 
 Requires Minecraft Java Edition **1.21.11**, Fabric Loader **0.20.1**, and Java **21 or later**. Minecraft, an account, and a launcher are required separately.
 
@@ -148,6 +150,8 @@ Includes Cobblestone S17, Fabric API, Chat Utilities, chat configuration, corres
 ### Farm warps
 
 Press `R` or enter `/wf`, then select a destination from the S17 crop list. Scroll to reach all destinations on smaller screens.
+
+The **Combat Quests** section at the top of the R menu shows both synced combat objectives, including kill counts, target names, and completion state. Open the quest screen through `/guild` to sync. This section displays objectives only.
 
 ### Guild quest HUD
 
@@ -219,6 +223,7 @@ The original [Cobblestone Helper](https://github.com/JandBDavenport/Cobblestone-
 - Bundled Fabric API: Apache-2.0
 
 Full bundled license texts are in [licenses](licenses).
+
 
 
 

@@ -185,6 +185,14 @@ public class GuildQuestsManager {
 	 * Clear all guild quest cache and reset to NO_DATA state.
 	 * Used for testing and manual cache reset.
 	 */
+    /** Current server-synced combat quests, without inventing warp aliases. */
+    public static java.util.List<String> getCombatQuestLines() {
+        var lines = new java.util.ArrayList<String>();
+        if (!boss1ActionLine.isBlank()) lines.add((boss1Complete ? "[Done] " : "[1] ") + boss1ActionLine);
+        if (!boss2ActionLine.isBlank()) lines.add((boss2Complete ? "[Done] " : "[2] ") + boss2ActionLine);
+        if (lines.isEmpty()) lines.add("Open /guild to sync quests");
+        return java.util.List.copyOf(lines);
+    }
 	public static void clearCache() {
 		dataState = DataState.NO_DATA;
 		questResetMs = 0;
