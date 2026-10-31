@@ -77,7 +77,7 @@ public class FarmWarpScreen extends Screen {
             ? new FarmData.FarmCategory[]{com.jandbdavenport.cobblestonehelper.data.FishData.CATEGORY}
             : FarmData.LIST.toArray(new FarmData.FarmCategory[0]);
 		for (FarmData.FarmCategory category : categories) {
-			tempY += 15;  // Space for category label
+			tempY += 12;  // Space for category label
 
 			int col = 0;
 			for (FarmData.FarmEntry entry : category.crops()) {
@@ -91,7 +91,7 @@ public class FarmWarpScreen extends Screen {
 			if (col > 0) {
 				tempY += SLOT_SIZE + 2;
 			}
-			tempY += 8;
+			tempY += 3;
 		}
 
 		// Calculate panel top to center vertically
@@ -111,7 +111,7 @@ public class FarmWarpScreen extends Screen {
 		for (int catIndex = 0; catIndex < categories.length; catIndex++) {
 			FarmData.FarmCategory category = categories[catIndex];
 			categoryHeaders.add(new CategoryHeader(category.name(), y + 2));
-			y += 15;  // Space for category label
+			y += 12;  // Space for category label
 
 			int col = 0;
 			int x = this.gridStartX;
@@ -153,7 +153,7 @@ public class FarmWarpScreen extends Screen {
 				separatorYs.add(y);
 			}
 
-			y += 8;
+			y += 3;
 		}
 
 		this.contentHeight = this.panelTop + panelHeight;
@@ -439,3 +439,4 @@ public class FarmWarpScreen extends Screen {
 		}
 	}
 }
+

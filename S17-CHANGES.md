@@ -90,3 +90,8 @@ This modified source follows the repository's GPL-3.0 license (LICENSE), rather 
 - Click the title bar to toggle farm/fish pages. Add 20 fish commands and server-pack texture references (no server textures redistributed).
 - Extend Infernal Citadel with Redstone, Raw Gold and Netherite.
 
+
+## 1.8.1
+- Compact category spacing without shrinking farm icons.
+- Add all eight W6 mob-to-farm mappings in the supplied order.
+

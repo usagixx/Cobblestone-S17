@@ -8,7 +8,7 @@
 
 ### ダウンロード・導入
 
-**[Cobblestone S17 v1.8をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.8-portable.zip)**
+**[Cobblestone S17 v1.8.1をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.8.1-portable.zip)**
 
 動作環境：Minecraft Java Edition **1.21.11**／Fabric Loader **0.20.1**／Java **21以上**。Minecraft本体・アカウント・ランチャーは別途必要です。
 
@@ -122,7 +122,7 @@ Farm Warpsのタイトル枠をクリックすると **Fish Warps** に切り替
 
 ### Download and installation
 
-**[Download Cobblestone S17 v1.8](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.8-portable.zip)**
+**[Download Cobblestone S17 v1.8.1](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.8.1-portable.zip)**
 
 Requires Minecraft Java Edition **1.21.11**, Fabric Loader **0.20.1**, and Java **21 or later**. Minecraft, an account, and a launcher are required separately.
 
@@ -227,6 +227,7 @@ The original [Cobblestone Helper](https://github.com/JandBDavenport/Cobblestone-
 - Bundled Fabric API: Apache-2.0
 
 Full bundled license texts are in [licenses](licenses).
+
 
 
 
