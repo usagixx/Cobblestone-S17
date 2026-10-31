@@ -21,7 +21,7 @@ public final class CookieKeys {
                 boolean clicked = false;
                 while (keys[i].wasPressed()) clicked = true;
                 boolean down = keys[i].isPressed();
-                if (clicked && !held[i] && client.currentScreen == null && client.player != null
+                if (com.jandbdavenport.cobblestonehelper.ModConfig.cookieKeysEnabled && clicked && !held[i] && client.currentScreen == null && client.player != null
                         && client.getNetworkHandler() != null) {
                     client.getNetworkHandler().sendChatCommand("cookie " + TYPES[i]);
                 }

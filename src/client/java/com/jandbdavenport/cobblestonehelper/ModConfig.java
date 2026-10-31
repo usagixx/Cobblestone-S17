@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 public class ModConfig {
 	// Feature toggles
 	public static boolean guildQuestsEnabled = true;
+    public static boolean cookieKeysEnabled = true;
     public static boolean clockEnabled = true, farmedDisplayEnabled = true;
 
 
@@ -82,6 +83,7 @@ public class ModConfig {
 
 				// Load feature toggles
 				guildQuestsEnabled = getBoolean(json, "guildQuestsEnabled", true);
+                cookieKeysEnabled = getBoolean(json, "cookieKeysEnabled", true);
                 clockEnabled = getBoolean(json, "clockEnabled", true);
                 farmedDisplayEnabled = getBoolean(json, "farmedDisplayEnabled", true);
 
@@ -161,6 +163,7 @@ public class ModConfig {
 
 			// Update only ModConfig's keys (preserve other managers' keys)
 			json.addProperty("guildQuestsEnabled", guildQuestsEnabled);
+            json.addProperty("cookieKeysEnabled", cookieKeysEnabled);
             json.addProperty("clockEnabled", clockEnabled);
             json.addProperty("farmedDisplayEnabled", farmedDisplayEnabled);
 

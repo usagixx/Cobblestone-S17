@@ -8,7 +8,8 @@ import java.util.regex.Pattern;
 public final class BossBarPriority {
     private static final Pattern FORMATTING = Pattern.compile("§[0-9A-FK-ORX]", Pattern.CASE_INSENSITIVE);
     private static final Pattern WEATHER = Pattern.compile(
-        "\\b(weather|rain|rainy|storm|thunderstorm|thunder|sunny|sunshine|snow|snowy|blizzard|fog|foggy|wind|windy|eclipse|heatwave)\\b|shimmering night|blood moon|clear skies");
+        "\\b(weather|rain|rainy|rainfall|storm|thunderstorm|thunder|sunny|sunshine|snow|snowy|blizzard|fog|foggy|wind|windy|eclipse|heatwave)\\b"
+        + "|\\b(shimmering\\s+night|calm\\s+thunder|blood\\s+moon|casual\\s+rain|positive\\s+sun|fortuitous\\s+rain|mysterious\\s+fog|fishy\\s+rainfall|clear\\s+skies)\\b");
 
     private BossBarPriority() {}
 

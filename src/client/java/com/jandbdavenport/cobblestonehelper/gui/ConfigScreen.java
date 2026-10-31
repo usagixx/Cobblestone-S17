@@ -226,7 +226,13 @@ public class ConfigScreen extends Screen {
         yPos += 25;
 
 
-		// GUILD QUESTS SECTION
+		addStyledButton(centerX - 140, yPos, 280, 20,
+            Text.literal("Cookie keys (2/3/5): " + (ModConfig.cookieKeysEnabled ? "ON" : "OFF")), button -> {
+                ModConfig.cookieKeysEnabled = !ModConfig.cookieKeysEnabled; ModConfig.saveConfig(); init();
+            }, BUTTON_TYPE_NORMAL);
+        yPos += 25;
+
+        // GUILD QUESTS SECTION
 		guildQuestsSectionStart = yPos;
 		yPos = buildGuildQuestsSection(centerX, yPos);
 		guildQuestsSectionEnd = yPos;
@@ -349,7 +355,7 @@ public class ConfigScreen extends Screen {
 				this.init();
 			});
 		yPos += 25;
-	
+
 	// Set Position button
 	addStyledButton(centerX - 140, yPos, 280, 20, Text.literal("Set Position..."), button ->
 		this.client.setScreen(new HudPositionScreen(GuildQuestsManager.WIDGET, this)),
@@ -1371,4 +1377,3 @@ public class ConfigScreen extends Screen {
 		return true;
 	}
 }
-

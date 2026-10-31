@@ -8,7 +8,7 @@
 
 ### ダウンロード・導入
 
-**[Cobblestone S17 v1.9をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9-portable.zip)**
+**[Cobblestone S17 v1.9.1をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9.1-portable.zip)**
 
 動作環境：Minecraft Java Edition **1.21.11**／Fabric Loader **0.20.1**／Java **21以上**。Minecraft本体・アカウント・ランチャーは別途必要です。
 
@@ -64,7 +64,7 @@ Farm Warpsのタイトル枠をクリックすると **Fish Warps** に切り替
 | ホイール、または `＋`／`−` | サイズ変更 |
 | `Done` または `Esc` | 保存して終了 |
 
-ボスバーは受信した全件を、自動縮小・複数列で表示します。優先順は **セレスティアル → ウェザー → グローバル → クッキー → その他**。同じ優先度ではサーバーの順番を保ちます。
+ボスバーは受信した全件を、自動縮小・複数列で表示します。優先順は **セレスティアル → ウェザー → グローバル → クッキー → その他**。同じ優先度ではサーバーの順番を保ちます。天候は Shimmering Night、Calm Thunder、Blood Moon、Casual Rain、Positive Sun、Fortuitous Rain、Mysterious Fog、Fishy Rainfall に対応しています。
 
 ### チャットの振り分け
 
@@ -97,7 +97,7 @@ Farm Warpsのタイトル枠をクリックすると **Fish Warps** に切り替
 
 ### 機能のON／OFF
 
-/s17chconfig の上部で Chat MOD・日本時間・FARMED表示を切り替えられます。Chat MODをOFFにすると通常のMinecraftチャットに戻り、ONで3欄表示に戻ります。配置とフィルター設定は保持します。/s17chat で切り替え、/s17chat on・/s17chat off で直接指定もできます。再起動は不要です。
+/s17chconfig の上部で Chat MOD・日本時間・FARMED表示・クッキーキー（2・3・5）を切り替えられます。OFFにするとキーからのクッキーコマンド送信を停止します。設定は再起動後も保持され、手入力の /cookie は使えます。Chat MODをOFFにすると通常のMinecraftチャットに戻り、ONで3欄表示に戻ります。配置とフィルター設定は保持します。/s17chat で切り替え、/s17chat on・/s17chat off で直接指定もできます。再起動は不要です。
 
 ### その他の設定
 
@@ -126,7 +126,7 @@ Farm Warpsのタイトル枠をクリックすると **Fish Warps** に切り替
 
 ### Download and installation
 
-**[Download Cobblestone S17 v1.9](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9-portable.zip)**
+**[Download Cobblestone S17 v1.9.1](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9.1-portable.zip)**
 
 Requires Minecraft Java Edition **1.21.11**, Fabric Loader **0.20.1**, and Java **21 or later**. Minecraft, an account, and a launcher are required separately.
 
@@ -182,7 +182,7 @@ Press Right Shift or enter `/s17hud` to edit the quest HUD, right-hand scoreboar
 | Mouse wheel or `+` / `−` | Resize |
 | `Done` or `Esc` | Save and exit |
 
-All received boss bars are displayed with automatic scaling and multiple columns. Priority: **Celestial → Weather → Global → Cookie → Others**. Server order is preserved within each priority group.
+All received boss bars are displayed with automatic scaling and multiple columns. Priority: **Celestial → Weather → Global → Cookie → Others**. Server order is preserved within each priority group. Recognized weather types include Shimmering Night, Calm Thunder, Blood Moon, Casual Rain, Positive Sun, Fortuitous Rain, Mysterious Fog, and Fishy Rainfall.
 
 ### Chat routing
 
@@ -215,7 +215,7 @@ First-time tutorial prompts (punching trees, crafting planks, etc.) are automati
 
 ### Feature toggles
 
-Use the top of /s17chconfig to toggle Chat MOD, Japan time, and the FARMED display. Chat MOD OFF restores vanilla chat; ON restores the three windows without deleting their layout or filters. /s17chat toggles the mode; /s17chat on and /s17chat off set it explicitly. No restart is required.
+Use the top of /s17chconfig to toggle Chat MOD, Japan time, the FARMED display, and cookie shortcuts (2/3/5). Disabling cookie shortcuts stops commands sent by those keys. The setting persists after restart; manually typed /cookie commands remain available. Chat MOD OFF restores vanilla chat; ON restores the three windows without deleting their layout or filters. /s17chat toggles the mode; /s17chat on and /s17chat off set it explicitly. No restart is required.
 
 ### Other settings
 
@@ -235,16 +235,3 @@ The original [Cobblestone Helper](https://github.com/JandBDavenport/Cobblestone-
 - Bundled Fabric API: Apache-2.0
 
 Full bundled license texts are in [licenses](licenses).
-
-
-
-
-
-
-
-
-
-
-
-
-

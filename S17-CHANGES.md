@@ -101,3 +101,9 @@ This modified source follows the repository's GPL-3.0 license (LICENSE), rather 
 - Add separate clock and FARMED display toggles to /s17chconfig.
 
 
+
+## 1.9.1
+- Explicitly recognize all eight supplied weather names, including Positive Sun and Fishy Rainfall.
+- Keep weather after Celestial and before Global/Cookie bars.
+
+- Add a persistent ON/OFF setting for cookie shortcut keys 2/3/5.
