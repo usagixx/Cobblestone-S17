@@ -1,4 +1,4 @@
-Cobblestone S17 v1.7 — 別PCへの導入
+Cobblestone S17 v1.7.1 — 別PCへの導入
 
 対象: Minecraft Java Edition 1.21.11 / Fabric Loader 0.20.1 / Java 21以上
 Minecraft本体・アカウント・ランチャーは別途必要です。
@@ -30,7 +30,7 @@ HUDの位置・大きさは別PCの画面に合わせて初期値から調整で
 未対応の会話書式は通知側に表示されることがあります。
 
 同梱:
-  Cobblestone S17 1.7（改変MOD）
+  Cobblestone S17 1.7.1（改変MOD）
   Fabric API 0.141.6+1.21.11
   Chat Utilities 2.2.3
   会話/通知分離設定、改変MODの対応ソース、ライセンス
@@ -61,5 +61,6 @@ FARMEDは日本時間の毎時00分に1回読み取り、前回00分との差を
 
 
 
-R画面上部に同期済みCombatクエストを表示します。未同期の場合は/guildからクエスト画面を開いてください。
+R画面で、未完了CombatクエストのMOBがいる農場アイコンに赤い枠線を表示します。/guildからクエスト画面を開いて同期してください。
+
 

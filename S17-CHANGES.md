@@ -79,3 +79,9 @@ This modified source follows the repository's GPL-3.0 license (LICENSE), rather 
 ## 1.7
 - Display both synced combat quest objectives and completion state above farms in the R menu, with wrapped text and scrolling.
 
+
+## 1.7.1
+- Replace legacy boss mappings with the supplied S17 mob-to-farm mappings for five regions (40 mobs, singular/plural aliases).
+- Highlight the corresponding farm icon for unfinished combat quests; remove the extra combat text section.
+- Infernal Citadel mobs are not mapped without supplied data.
+
