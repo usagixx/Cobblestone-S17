@@ -8,7 +8,7 @@
 
 ### ダウンロード・導入
 
-**[Cobblestone S17 v1.8.1をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.8.1-portable.zip)**
+**[Cobblestone S17 v1.9をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9-portable.zip)**
 
 動作環境：Minecraft Java Edition **1.21.11**／Fabric Loader **0.20.1**／Java **21以上**。Minecraft本体・アカウント・ランチャーは別途必要です。
 
@@ -29,7 +29,7 @@
 | 3 | /cookie cobbled | Cobbledクッキーを使用 |
 | 5 | /cookie suspicious | Suspiciousクッキーを使用 |
 | 右Shift | `/s17hud` | HUDの位置・サイズを編集 |
-| — | `/chconfig` | MOD設定を開く |
+| — | `/s17chconfig` | MOD設定を開く |
 | — | `/guild` | ギルド画面を開く。クエスト画面まで進むとHUDに同期 |
 | — | `/s17chattest` | チャットの振り分けをテスト。自分の画面だけに表示 |
 
@@ -95,9 +95,13 @@ Farm Warpsのタイトル枠をクリックすると **Fish Warps** に切り替
 
 初回チュートリアル通知（木を倒す・板材を作る等）は自動的にOFFになります。
 
+### 機能のON／OFF
+
+/s17chconfig の上部で Chat MOD・日本時間・FARMED表示を切り替えられます。Chat MODをOFFにすると通常のMinecraftチャットに戻り、ONで3欄表示に戻ります。配置とフィルター設定は保持します。/s17chat で切り替え、/s17chat on・/s17chat off で直接指定もできます。再起動は不要です。
+
 ### その他の設定
 
-`/chconfig` から変更できます。
+`/s17chconfig` から変更できます。
 
 | 機能 | 内容 |
 |---|---|
@@ -122,7 +126,7 @@ Farm Warpsのタイトル枠をクリックすると **Fish Warps** に切り替
 
 ### Download and installation
 
-**[Download Cobblestone S17 v1.8.1](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.8.1-portable.zip)**
+**[Download Cobblestone S17 v1.9](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9-portable.zip)**
 
 Requires Minecraft Java Edition **1.21.11**, Fabric Loader **0.20.1**, and Java **21 or later**. Minecraft, an account, and a launcher are required separately.
 
@@ -143,7 +147,7 @@ Includes Cobblestone S17, Fabric API, Chat Utilities, chat configuration, corres
 | 3 | /cookie cobbled | Use Cobbled cookie |
 | 5 | /cookie suspicious | Use Suspicious cookie |
 | Right Shift | `/s17hud` | Edit HUD positions and sizes |
-| — | `/chconfig` | Open mod settings |
+| — | `/s17chconfig` | Open mod settings |
 | — | `/guild` | Open the guild menu; enter the quest screen to sync the HUD |
 | — | `/s17chattest` | Preview chat routing locally; nothing is broadcast |
 
@@ -209,9 +213,13 @@ FARMED is read only at minute 00 of each hour in Japan time. The difference from
 
 First-time tutorial prompts (punching trees, crafting planks, etc.) are automatically disabled.
 
+### Feature toggles
+
+Use the top of /s17chconfig to toggle Chat MOD, Japan time, and the FARMED display. Chat MOD OFF restores vanilla chat; ON restores the three windows without deleting their layout or filters. /s17chat toggles the mode; /s17chat on and /s17chat off set it explicitly. No restart is required.
+
 ### Other settings
 
-Enter `/chconfig` to configure these features.
+Enter `/s17chconfig` to configure these features.
 
 | Feature | Description |
 |---|---|
@@ -227,6 +235,8 @@ The original [Cobblestone Helper](https://github.com/JandBDavenport/Cobblestone-
 - Bundled Fabric API: Apache-2.0
 
 Full bundled license texts are in [licenses](licenses).
+
+
 
 
 

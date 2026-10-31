@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 public class ModConfig {
 	// Feature toggles
 	public static boolean guildQuestsEnabled = true;
+    public static boolean clockEnabled = true, farmedDisplayEnabled = true;
 
 
 	// Farm Warps display toggles
@@ -81,6 +82,8 @@ public class ModConfig {
 
 				// Load feature toggles
 				guildQuestsEnabled = getBoolean(json, "guildQuestsEnabled", true);
+                clockEnabled = getBoolean(json, "clockEnabled", true);
+                farmedDisplayEnabled = getBoolean(json, "farmedDisplayEnabled", true);
 
 
 				// Load Farm Warps toggles
@@ -158,6 +161,8 @@ public class ModConfig {
 
 			// Update only ModConfig's keys (preserve other managers' keys)
 			json.addProperty("guildQuestsEnabled", guildQuestsEnabled);
+            json.addProperty("clockEnabled", clockEnabled);
+            json.addProperty("farmedDisplayEnabled", farmedDisplayEnabled);
 
 
 			json.addProperty("farmWarpsGuildQuestHighlight", farmWarpsGuildQuestHighlight);
@@ -230,4 +235,5 @@ public class ModConfig {
 		}
 	}
 }
+
 

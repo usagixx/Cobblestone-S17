@@ -1,4 +1,4 @@
-Cobblestone S17 v1.8.1 — 別PCへの導入
+Cobblestone S17 v1.9 — 別PCへの導入
 
 対象: Minecraft Java Edition 1.21.11 / Fabric Loader 0.20.1 / Java 21以上
 Minecraft本体・アカウント・ランチャーは別途必要です。
@@ -17,7 +17,7 @@ Minecraft本体・アカウント・ランチャーは別途必要です。
 操作:
   R または /wf: 農場ワープ
   H: プレイヤー表示切替
-  /chconfig: MOD設定
+  /s17chconfig: MOD設定
   右Shift または /s17hud: HUD編集
   HUD編集: ドラッグで移動、ホイールか +/- で拡縮、Done/Escで保存
   ギルドクエスト: /guildでクエスト画面を開いて同期
@@ -30,7 +30,7 @@ HUDの位置・大きさは別PCの画面に合わせて初期値から調整で
 未対応の会話書式は通知側に表示されることがあります。
 
 同梱:
-  Cobblestone S17 1.8.1（改変MOD）
+  Cobblestone S17 1.9（改変MOD）
   Fabric API 0.141.6+1.21.11
   Chat Utilities 2.2.3
   会話/通知分離設定、改変MODの対応ソース、ライセンス
@@ -67,4 +67,7 @@ R画面で、未完了CombatクエストのMOBがいる農場アイコンに赤�
 
 Farm Warpsのタイトル枠をクリックするとFish Warpsへ切り替わり、再クリックで戻ります。魚を選ぶと/fish 魚名を送信します。魚アイコンにはサーバーのリソースパックが必要です。W6はRedstone・Raw Gold・Netheriteを含む8枠です。
 
+
+
+/s17chconfig: 機能設定。Chat MOD・日本時間・FARMED表示のON/OFFを切り替えできます。/s17chat [on|off] で通常チャットと3欄表示を切り替えできます。
 

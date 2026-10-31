@@ -120,6 +120,11 @@ public class CobblestoneHelper implements ClientModInitializer {
                 return Command.SINGLE_SUCCESS;
             })));
 
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
+            dispatcher.register(literal("s17chat")
+                .executes(ctx -> changeChatMode(ctx.getSource(), !com.jandbdavenport.cobblestonehelper.features.ChatMode.enabled()))
+                .then(literal("on").executes(ctx -> changeChatMode(ctx.getSource(), true)))
+                .then(literal("off").executes(ctx -> changeChatMode(ctx.getSource(), false)))));
         // Register /wf command
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
 			dispatcher.register(literal("wf").executes(ctx -> {
@@ -131,15 +136,15 @@ public class CobblestoneHelper implements ClientModInitializer {
 		System.out.println("[CobblestoneHelper] ✓ Registered command: /wf");
 
 
-		// Register /chconfig command
+		// Register /s17chconfig command
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
-			dispatcher.register(literal("chconfig").executes(ctx -> {
+			dispatcher.register(literal("s17chconfig").executes(ctx -> {
 				MinecraftClient.getInstance().send(() ->
 					MinecraftClient.getInstance().setScreen(new ConfigScreen(MinecraftClient.getInstance().currentScreen)));
 				return Command.SINGLE_SUCCESS;
 			}))
 		);
-		System.out.println("[CobblestoneHelper] ✓ Registered command: /chconfig");
+		System.out.println("[CobblestoneHelper] ✓ Registered command: /s17chconfig");
 
 		// Local-only preview; nothing is sent to the server or other players.
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
@@ -153,9 +158,20 @@ public class CobblestoneHelper implements ClientModInitializer {
 		System.out.println("[CobblestoneHelper] ========== MOD INITIALIZATION COMPLETE ==========");
 	}
 
-	public static KeyBinding getFarmWarpsKey() {
+	private static int changeChatMode(net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource source, boolean enabled) {
+        if (!com.jandbdavenport.cobblestonehelper.features.ChatMode.set(enabled)) {
+            source.sendError(Text.literal("Chat Utilities is unavailable or its settings could not be saved."));
+            return 0;
+        }
+        source.sendFeedback(Text.literal(enabled ? "Chat MOD: ON" : "Chat MOD: OFF (Vanilla chat)"));
+        return Command.SINGLE_SUCCESS;
+    }
+
+    public static KeyBinding getFarmWarpsKey() {
 		return farmWarpsKey;
 	}
 }
+
+
 
 

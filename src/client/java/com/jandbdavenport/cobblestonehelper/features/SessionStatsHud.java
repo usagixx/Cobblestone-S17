@@ -72,20 +72,24 @@ public final class SessionStatsHud {
     public static void render(DrawContext ctx) {
         var client = MinecraftClient.getInstance();
         if (client.player == null || client.options.hudHidden) return;
+        if (!ModConfig.clockEnabled && !ModConfig.farmedDisplayEnabled) return;
         String clock = "JST " + CLOCK.format(Instant.now());
         String farmed = last == null ? "60min --" : "60min " + amount(last.amount());
         float scale = ModConfig.statsScale;
         float width = (Math.max(client.textRenderer.getWidth(clock), client.textRenderer.getWidth(farmed)) + 8) * scale;
-        float height = 25 * scale;
+        int lines = (ModConfig.clockEnabled ? 1 : 0) + (ModConfig.farmedDisplayEnabled ? 1 : 0);
+        int boxHeight = 3 + lines * 11;
+        float height = boxHeight * scale;
         bounds = HudLayout.place(ModConfig.statsX < 0 ? 5 : ModConfig.statsX,
             ModConfig.statsY < 0 ? ctx.getScaledWindowHeight() - height - 4 : ModConfig.statsY, width, height);
         ctx.getMatrices().pushMatrix();
         ctx.getMatrices().translate(bounds.x(), bounds.y());
         ctx.getMatrices().scale(scale, scale);
-        ctx.fill(0, 0, (int)(width / scale), 25, 0x88000000);
-        ctx.drawTextWithShadow(client.textRenderer, clock, 4, 3, 0xFFFFDD55);
-        ctx.drawTextWithShadow(client.textRenderer, farmed, 4, 14, 0xFFFFFFFF);
+        ctx.fill(0, 0, (int)(width / scale), boxHeight, 0x88000000);
+        if (ModConfig.clockEnabled) ctx.drawTextWithShadow(client.textRenderer, clock, 4, 3, 0xFFFFDD55);
+        if (ModConfig.farmedDisplayEnabled) ctx.drawTextWithShadow(client.textRenderer, farmed, 4, ModConfig.clockEnabled ? 14 : 3, 0xFFFFFFFF);
         ctx.getMatrices().popMatrix();
     }
 }
+
 

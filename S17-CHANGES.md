@@ -95,3 +95,9 @@ This modified source follows the repository's GPL-3.0 license (LICENSE), rather 
 - Compact category spacing without shrinking farm icons.
 - Add all eight W6 mob-to-farm mappings in the supplied order.
 
+
+## 1.9
+- Add a persisted live Chat Utilities/vanilla toggle to /s17chconfig and /s17chat [on|off].
+- Add separate clock and FARMED display toggles to /s17chconfig.
+
+

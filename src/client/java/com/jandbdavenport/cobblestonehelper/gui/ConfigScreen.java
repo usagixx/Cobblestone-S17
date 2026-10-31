@@ -207,6 +207,23 @@ public class ConfigScreen extends Screen {
         addStyledButton(centerX - 140, yPos, 280, 20, Text.literal("Edit HUD Layout (Right Shift)"),
             button -> this.client.setScreen(new HudEditorScreen()), BUTTON_TYPE_NORMAL);
         yPos += 25;
+        boolean chatOn = com.jandbdavenport.cobblestonehelper.features.ChatMode.enabled();
+        ButtonWidget chatToggle = addStyledButton(centerX - 140, yPos, 280, 20,
+            Text.literal("Chat MOD: " + (chatOn ? "ON" : "OFF (Vanilla)")), button -> {
+                com.jandbdavenport.cobblestonehelper.features.ChatMode.set(!chatOn); init();
+            }, BUTTON_TYPE_NORMAL);
+        chatToggle.active = com.jandbdavenport.cobblestonehelper.features.ChatMode.available();
+        yPos += 25;
+        addStyledButton(centerX - 140, yPos, 280, 20,
+            Text.literal("Japan clock: " + (ModConfig.clockEnabled ? "ON" : "OFF")), button -> {
+                ModConfig.clockEnabled = !ModConfig.clockEnabled; ModConfig.saveConfig(); init();
+            }, BUTTON_TYPE_NORMAL);
+        yPos += 25;
+        addStyledButton(centerX - 140, yPos, 280, 20,
+            Text.literal("FARMED display: " + (ModConfig.farmedDisplayEnabled ? "ON" : "OFF")), button -> {
+                ModConfig.farmedDisplayEnabled = !ModConfig.farmedDisplayEnabled; ModConfig.saveConfig(); init();
+            }, BUTTON_TYPE_NORMAL);
+        yPos += 25;
 
 
 		// GUILD QUESTS SECTION
@@ -1354,3 +1371,4 @@ public class ConfigScreen extends Screen {
 		return true;
 	}
 }
+
