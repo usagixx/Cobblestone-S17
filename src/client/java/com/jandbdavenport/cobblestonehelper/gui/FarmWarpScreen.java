@@ -52,6 +52,7 @@ public class FarmWarpScreen extends Screen {
 	private int panelTop = 0;
 	private int scrollOffset = 0;
 	private int maxScroll = 0;
+    private boolean fishPage;
 
 	private record CategoryHeader(String name, int y) {}
 
@@ -72,7 +73,9 @@ public class FarmWarpScreen extends Screen {
 
 		// First pass: calculate total content height to determine panel size
 		int tempY = GRID_START_Y;
-		FarmData.FarmCategory[] categories = FarmData.LIST.toArray(new FarmData.FarmCategory[0]);
+		FarmData.FarmCategory[] categories = fishPage
+            ? new FarmData.FarmCategory[]{com.jandbdavenport.cobblestonehelper.data.FishData.CATEGORY}
+            : FarmData.LIST.toArray(new FarmData.FarmCategory[0]);
 		for (FarmData.FarmCategory category : categories) {
 			tempY += 15;  // Space for category label
 
@@ -128,7 +131,7 @@ public class FarmWarpScreen extends Screen {
 				this.addDrawableChild(cropButton);
 				cropButton.active = y >= this.panelTop + 33 && y + SLOT_SIZE < this.panelTop + panelHeight;
 				cropButton.visible = cropButton.active;
-				String questHighlight = ModConfig.farmWarpsGuildQuestHighlight ? GuildQuestsManager.getQuestHighlightType(displayName) : "";
+				String questHighlight = !fishPage && ModConfig.farmWarpsGuildQuestHighlight ? GuildQuestsManager.getQuestHighlightType(displayName) : "";
 				cropWidgets.add(new CropItemWidget(x, y, entry.itemId(), displayName, questHighlight));
 
 				col++;
@@ -154,6 +157,9 @@ public class FarmWarpScreen extends Screen {
 		}
 
 		this.contentHeight = this.panelTop + panelHeight;
+        addDrawableChild(ButtonWidget.builder(Text.empty(), button -> {
+            fishPage = !fishPage; scrollOffset = 0; init();
+        }).dimensions(gridStartX - 6, panelTop + 1, rowWidth + 12, 30).build());
 	}
 
 	@Override
@@ -187,7 +193,7 @@ public class FarmWarpScreen extends Screen {
 		context.fillGradient(panelLeft + 1, this.panelTop + 32, panelRight - 1, panelBottom - 1, 0xFF2A2A2A, 0xFF0A0A0A);
 
 		// 6. Draw title text (white, centered)
-		context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, this.panelTop + 10, COLOR_TEXT_WHITE);
+		context.drawCenteredTextWithShadow(this.textRenderer, Text.literal(fishPage ? "Fish Warps" : "Farm Warps"), this.width / 2, this.panelTop + 10, COLOR_TEXT_WHITE);
 
 		// 7. Draw category headers with pulsing accent bar animation
 		context.enableScissor(panelLeft + 1, this.panelTop + 33, panelRight - 1, panelBottom - 1);
@@ -266,7 +272,7 @@ public class FarmWarpScreen extends Screen {
 		MinecraftClient client = MinecraftClient.getInstance();
 		ClientPlayNetworkHandler networkHandler = client.getNetworkHandler();
 		if (networkHandler != null) {
-			networkHandler.sendChatCommand("warpfarm " + commandArg);
+			networkHandler.sendChatCommand((fishPage ? "fish " : "warpfarm ") + commandArg);
 		}
 	}
 
@@ -297,6 +303,7 @@ public class FarmWarpScreen extends Screen {
 		private final ItemStack stack;
 		private final String displayName;
 		private final String questHighlight;
+        private final Identifier fishTexture;
 
 		private long hoverEnterTime = Long.MIN_VALUE;
 		private long hoverExitTime = Long.MIN_VALUE;
@@ -307,10 +314,12 @@ public class FarmWarpScreen extends Screen {
 			this.y = y;
 			this.displayName = displayName;
 			this.questHighlight = questHighlight;
+            this.fishTexture = itemId.startsWith("cobblestone:fish/")
+                ? Identifier.of("cobblestone", "textures/item/" + itemId.substring("cobblestone:".length()) + ".png") : null;
 
 			ItemStack tempStack;
 			try {
-				tempStack = new ItemStack(Registries.ITEM.get(Identifier.of(itemId)));
+				tempStack = new ItemStack(Registries.ITEM.get(Identifier.of(fishTexture == null ? itemId : "minecraft:cod")));
 			} catch (Exception e) {
 				tempStack = ItemStack.EMPTY;
 			}
@@ -409,7 +418,10 @@ public class FarmWarpScreen extends Screen {
 			}
 
 			// Draw item
-			if (!stack.isEmpty()) {
+			if (fishTexture != null && MinecraftClient.getInstance().getResourceManager().getResource(fishTexture).isPresent()) {
+                context.drawTexture(net.minecraft.client.gl.RenderPipelines.GUI_TEXTURED, fishTexture,
+                    x + 1, y + 1, 0f, 0f, 16, 16, 16, 16);
+            } else if (!stack.isEmpty()) {
 				context.drawItem(stack, x + 1, y + 1);
 			}
 

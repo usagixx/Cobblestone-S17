@@ -8,7 +8,7 @@
 
 ### ダウンロード・導入
 
-**[Cobblestone S17 v1.7.1をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.7.1-portable.zip)**
+**[Cobblestone S17 v1.8をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.8-portable.zip)**
 
 動作環境：Minecraft Java Edition **1.21.11**／Fabric Loader **0.20.1**／Java **21以上**。Minecraft本体・アカウント・ランチャーは別途必要です。
 
@@ -40,6 +40,8 @@
 `R` または `/wf` で農場選択画面を開き、S17の作物一覧から行き先を選びます。小さい画面ではスクロールして選択できます。
 
 R画面では、未完了の収穫クエスト対象に緑、Combatクエスト対象のMOBがいる農場に赤い枠線が付きます。クエスト情報は /guild から同期してください。
+
+Farm Warpsのタイトル枠をクリックすると **Fish Warps** に切り替わり、もう一度クリックすると戻ります。魚20種類のアイコンを押すと /fish 魚名 を実行します。専用アイコンはサーバーのリソースパックから表示し、未適用の場合は代わりに通常の魚を表示します。W6はRedstone・Raw Gold・Netheriteを含む8枠です。
 
 ### ギルドクエストHUD
 
@@ -120,7 +122,7 @@ R画面では、未完了の収穫クエスト対象に緑、Combatクエスト�
 
 ### Download and installation
 
-**[Download Cobblestone S17 v1.7.1](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.7.1-portable.zip)**
+**[Download Cobblestone S17 v1.8](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.8-portable.zip)**
 
 Requires Minecraft Java Edition **1.21.11**, Fabric Loader **0.20.1**, and Java **21 or later**. Minecraft, an account, and a launcher are required separately.
 
@@ -152,6 +154,8 @@ Includes Cobblestone S17, Fabric API, Chat Utilities, chat configuration, corres
 Press `R` or enter `/wf`, then select a destination from the S17 crop list. Scroll to reach all destinations on smaller screens.
 
 In the R menu, unfinished farming objectives have green outlines; farms hosting combat quest targets have red outlines. Sync quest information through /guild.
+
+Click the Farm Warps title bar to switch to **Fish Warps**, and click again to return. Select one of 20 fish to run /fish FishName. Custom icons use the server resource pack; a vanilla fish appears if it is unavailable. W6 has eight destinations, including Redstone, Raw Gold, and Netherite.
 
 ### Guild quest HUD
 
@@ -223,6 +227,7 @@ The original [Cobblestone Helper](https://github.com/JandBDavenport/Cobblestone-
 - Bundled Fabric API: Apache-2.0
 
 Full bundled license texts are in [licenses](licenses).
+
 
 
 

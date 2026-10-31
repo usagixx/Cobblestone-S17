@@ -1,0 +1,102 @@
+[
+  {
+    "displayName": "Pilchard",
+    "itemId": "cobblestone:fish/pilchard",
+    "commandArg": "Pilchard"
+  },
+  {
+    "displayName": "Mackerel",
+    "itemId": "cobblestone:fish/mackerel",
+    "commandArg": "Mackerel"
+  },
+  {
+    "displayName": "Sea Bass",
+    "itemId": "cobblestone:fish/seabass",
+    "commandArg": "Sea Bass"
+  },
+  {
+    "displayName": "Bluefin Tuna",
+    "itemId": "cobblestone:fish/bluefin",
+    "commandArg": "Bluefin Tuna"
+  },
+  {
+    "displayName": "Koi",
+    "itemId": "cobblestone:fish/koi",
+    "commandArg": "Koi"
+  },
+  {
+    "displayName": "Red Sea Bream",
+    "itemId": "cobblestone:fish/madai",
+    "commandArg": "Red Sea Bream"
+  },
+  {
+    "displayName": "Unagi Eel",
+    "itemId": "cobblestone:fish/unagi",
+    "commandArg": "Unagi Eel"
+  },
+  {
+    "displayName": "Dragon Carp",
+    "itemId": "cobblestone:fish/dragoncarp",
+    "commandArg": "Dragon Carp"
+  },
+  {
+    "displayName": "Clownfish",
+    "itemId": "cobblestone:fish/clownfish",
+    "commandArg": "Clownfish"
+  },
+  {
+    "displayName": "Lionfish",
+    "itemId": "cobblestone:fish/lionfish",
+    "commandArg": "Lionfish"
+  },
+  {
+    "displayName": "Barracuda",
+    "itemId": "cobblestone:fish/barracuda",
+    "commandArg": "Barracuda"
+  },
+  {
+    "displayName": "Blue Marlin",
+    "itemId": "cobblestone:fish/bluemarlin",
+    "commandArg": "Blue Marlin"
+  },
+  {
+    "displayName": "Tilapia",
+    "itemId": "cobblestone:fish/tilapia",
+    "commandArg": "Tilapia"
+  },
+  {
+    "displayName": "Bluegill",
+    "itemId": "cobblestone:fish/bluegill",
+    "commandArg": "Bluegill"
+  },
+  {
+    "displayName": "River Catfish",
+    "itemId": "cobblestone:fish/rivercatfish",
+    "commandArg": "River Catfish"
+  },
+  {
+    "displayName": "Tigerfish",
+    "itemId": "cobblestone:fish/tigerfish",
+    "commandArg": "Tigerfish"
+  },
+  {
+    "displayName": "Capelin",
+    "itemId": "cobblestone:fish/capelin",
+    "commandArg": "Capelin"
+  },
+  {
+    "displayName": "Atlantic Cod",
+    "itemId": "cobblestone:fish/atlanticcod",
+    "commandArg": "Atlantic Cod"
+  },
+  {
+    "displayName": "Oarfish",
+    "itemId": "cobblestone:fish/oarfish",
+    "commandArg": "Oarfish"
+  },
+  {
+    "displayName": "Flounder",
+    "itemId": "cobblestone:fish/flounder",
+    "commandArg": "Flounder"
+  }
+]

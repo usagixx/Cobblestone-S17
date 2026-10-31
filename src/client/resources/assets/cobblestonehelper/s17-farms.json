@@ -251,6 +251,21 @@
         "displayName": "Gilded Blackstone",
         "itemId": "minecraft:gilded_blackstone",
         "commandArg": "gildedblackstone"
+      },
+      {
+        "displayName": "Redstone",
+        "itemId": "minecraft:redstone_block",
+        "commandArg": "redstone"
+      },
+      {
+        "displayName": "Raw Gold",
+        "itemId": "minecraft:raw_gold_block",
+        "commandArg": "rawgold"
+      },
+      {
+        "displayName": "Netherite",
+        "itemId": "minecraft:netherite_block",
+        "commandArg": "netherite"
       }
     ]
   }
