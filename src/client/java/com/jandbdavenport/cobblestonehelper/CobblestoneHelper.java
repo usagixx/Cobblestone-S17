@@ -45,6 +45,7 @@ public class CobblestoneHelper implements ClientModInitializer {
             }
         });
         com.jandbdavenport.cobblestonehelper.features.SessionStatsHud.init();
+        com.jandbdavenport.cobblestonehelper.features.RushNotifier.init();
 
 		try {
 			// Create custom keybinding category
@@ -136,7 +137,31 @@ public class CobblestoneHelper implements ClientModInitializer {
 		System.out.println("[CobblestoneHelper] ✓ Registered command: /wf");
 
 
-		// Register /s17chconfig command
+		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
+            dispatcher.register(literal("s17rushtest").executes(ctx -> {
+                com.jandbdavenport.cobblestonehelper.features.RushNotifier.preview();
+                return Command.SINGLE_SUCCESS;
+            })));
+
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
+            dispatcher.register(literal("s17echotest").executes(ctx -> {
+                com.jandbdavenport.cobblestonehelper.features.RushNotifier.previewEcho();
+                return Command.SINGLE_SUCCESS;
+            })));
+
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
+            dispatcher.register(literal("s17chance")
+                .executes(ctx -> changeChanceMode(ctx.getSource(), !(ModConfig.rushNoticeEnabled || ModConfig.echoNoticeEnabled)))));
+
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
+            dispatcher.register(literal("s17chancesound").executes(ctx -> {
+                ModConfig.chanceSoundEnabled = !ModConfig.chanceSoundEnabled;
+                ModConfig.saveConfig();
+                ctx.getSource().sendFeedback(Text.literal("Chance sound: " + (ModConfig.chanceSoundEnabled ? "ON" : "OFF")));
+                return Command.SINGLE_SUCCESS;
+            })));
+
+        // Register /s17chconfig command
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
 			dispatcher.register(literal("s17chconfig").executes(ctx -> {
 				MinecraftClient.getInstance().send(() ->
@@ -167,11 +192,15 @@ public class CobblestoneHelper implements ClientModInitializer {
         return Command.SINGLE_SUCCESS;
     }
 
+    private static int changeChanceMode(net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource source, boolean enabled) {
+        ModConfig.rushNoticeEnabled = enabled;
+        ModConfig.echoNoticeEnabled = enabled;
+        ModConfig.saveConfig();
+        source.sendFeedback(Text.literal("Rush / Echo chance notifications: " + (enabled ? "ON" : "OFF")));
+        return Command.SINGLE_SUCCESS;
+    }
+
     public static KeyBinding getFarmWarpsKey() {
 		return farmWarpsKey;
 	}
 }
-
-
-
-

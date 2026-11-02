@@ -18,6 +18,9 @@ public class ModConfig {
 	// Feature toggles
 	public static boolean guildQuestsEnabled = true;
     public static boolean cookieKeysEnabled = true;
+    public static boolean rushNoticeEnabled = true;
+    public static boolean echoNoticeEnabled = true;
+    public static boolean chanceSoundEnabled = true;
     public static boolean clockEnabled = true, farmedDisplayEnabled = true;
 
 
@@ -84,6 +87,9 @@ public class ModConfig {
 				// Load feature toggles
 				guildQuestsEnabled = getBoolean(json, "guildQuestsEnabled", true);
                 cookieKeysEnabled = getBoolean(json, "cookieKeysEnabled", true);
+                rushNoticeEnabled = getBoolean(json, "rushNoticeEnabled", true);
+                echoNoticeEnabled = getBoolean(json, "echoNoticeEnabled", true);
+                chanceSoundEnabled = getBoolean(json, "chanceSoundEnabled", true);
                 clockEnabled = getBoolean(json, "clockEnabled", true);
                 farmedDisplayEnabled = getBoolean(json, "farmedDisplayEnabled", true);
 
@@ -164,6 +170,9 @@ public class ModConfig {
 			// Update only ModConfig's keys (preserve other managers' keys)
 			json.addProperty("guildQuestsEnabled", guildQuestsEnabled);
             json.addProperty("cookieKeysEnabled", cookieKeysEnabled);
+            json.addProperty("rushNoticeEnabled", rushNoticeEnabled);
+            json.addProperty("echoNoticeEnabled", echoNoticeEnabled);
+            json.addProperty("chanceSoundEnabled", chanceSoundEnabled);
             json.addProperty("clockEnabled", clockEnabled);
             json.addProperty("farmedDisplayEnabled", farmedDisplayEnabled);
 
@@ -238,5 +247,3 @@ public class ModConfig {
 		}
 	}
 }
-
-

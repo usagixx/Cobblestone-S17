@@ -232,6 +232,18 @@ public class ConfigScreen extends Screen {
             }, BUTTON_TYPE_NORMAL);
         yPos += 25;
 
+        addStyledButton(centerX - 140, yPos, 280, 20,
+            Text.literal("Rush notification: " + (ModConfig.rushNoticeEnabled ? "ON" : "OFF")), button -> {
+                ModConfig.rushNoticeEnabled = !ModConfig.rushNoticeEnabled; ModConfig.saveConfig(); init();
+            }, BUTTON_TYPE_NORMAL);
+        yPos += 25;
+
+        addStyledButton(centerX - 140, yPos, 280, 20,
+            Text.literal("Echo notification: " + (ModConfig.echoNoticeEnabled ? "ON" : "OFF")), button -> {
+                ModConfig.echoNoticeEnabled = !ModConfig.echoNoticeEnabled; ModConfig.saveConfig(); init();
+            }, BUTTON_TYPE_NORMAL);
+        yPos += 25;
+
         // GUILD QUESTS SECTION
 		guildQuestsSectionStart = yPos;
 		yPos = buildGuildQuestsSection(centerX, yPos);

@@ -15,8 +15,11 @@
     "particles.SuppressHiddenEntityParticlesMixin",
     "rendering.MovableSidebarMixin",
     "rendering.AllBossBarsMixin",
+    "rendering.HideSpecialCropNoticeMixin",
+    "rendering.ChanceTitleSizeMixin",
     "screen.ChatUtilitiesClickMixin",
-    "screen.ChatUtilitiesScrollMixin"
+    "screen.ChatUtilitiesScrollMixin",
+    "screen.ProcCompletionMessageMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -8,7 +8,7 @@
 
 ### ダウンロード・導入
 
-**[Cobblestone S17 v1.9.1をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9.1-portable.zip)**
+**[Cobblestone S17 v1.9.2をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9.2-portable.zip)**
 
 動作環境：Minecraft Java Edition **1.21.11**／Fabric Loader **0.20.1**／Java **21以上**。Minecraft本体・アカウント・ランチャーは別途必要です。
 
@@ -30,6 +30,8 @@
 | 5 | /cookie suspicious | Suspiciousクッキーを使用 |
 | 右Shift | `/s17hud` | HUDの位置・サイズを編集 |
 | — | `/s17chconfig` | MOD設定を開く |
+| — | `/s17chance` | Rush・Echoのチャンス通知をまとめてON／OFF |
+| — | `/s17chancesound` | チャンス通知の金床音だけON／OFF |
 | — | `/guild` | ギルド画面を開く。クエスト画面まで進むとHUDに同期 |
 | — | `/s17chattest` | チャットの振り分けをテスト。自分の画面だけに表示 |
 
@@ -95,6 +97,16 @@ Farm Warpsのタイトル枠をクリックすると **Fish Warps** に切り替
 
 初回チュートリアル通知（木を倒す・板材を作る等）は自動的にOFFになります。
 
+### Rush／Echoのチャンス通知
+
+Rushの輪・矢印とEchoの矢印を受信データから検知し、従来の中央見出しと同じ位置に **RUSH CHANCE!／ECHO CHANCE!** を表示します。視線や音量に依存せず、ウィンドウサイズの変更にも追従します。文字は標準タイトルの75％で、Rushは金〜クリーム色、Echoは紫〜ピンク色。従来の通知を受信すると、そのフォント・太字・影・配色を引き継ぎます。
+
+連鎖中は種類ごとに最初の1回だけ通知し、`ECHO chain (… steps) • …`／`RUSH chain (…s) • …` の終了チャットで次の検知を有効にします。中央のECHO／RUSH表示ではリセットしません。終了通知を受信できない場合は、専用表示が10秒途切れると再検知します。新しい中央見出しは前の見出しを上書きしますが、下段のスペシャルクロップ通知は消しません。
+
+チャンス通知時には金床を置く音を1回鳴らします。`/s17chance` は通知全体、`/s17chancesound` は追加音だけを、入力するたびにON／OFFします。設定は保存されます。追加音はMinecraftのUI音量に従います。`/s17chconfig` ではRushとEchoを個別に切り替えられます。`/s17rushtest`・`/s17echotest` で表示と音を自分の画面だけで確認できます。
+
+スペシャルクロップの中央報酬行は作物名だけを省略し、倍率・獲得数・回数・Golden倍率・色を残します。例：`1335x [+30.27B Warped Wart] GOLDEN x5` → `1335x [+30.27B] GOLDEN x5`。
+
 ### 機能のON／OFF
 
 /s17chconfig の上部で Chat MOD・日本時間・FARMED表示・クッキーキー（2・3・5）を切り替えられます。OFFにするとキーからのクッキーコマンド送信を停止します。設定は再起動後も保持され、手入力の /cookie は使えます。Chat MODをOFFにすると通常のMinecraftチャットに戻り、ONで3欄表示に戻ります。配置とフィルター設定は保持します。/s17chat で切り替え、/s17chat on・/s17chat off で直接指定もできます。再起動は不要です。
@@ -126,7 +138,7 @@ Farm Warpsのタイトル枠をクリックすると **Fish Warps** に切り替
 
 ### Download and installation
 
-**[Download Cobblestone S17 v1.9.1](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9.1-portable.zip)**
+**[Download Cobblestone S17 v1.9.2](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9.2-portable.zip)**
 
 Requires Minecraft Java Edition **1.21.11**, Fabric Loader **0.20.1**, and Java **21 or later**. Minecraft, an account, and a launcher are required separately.
 
@@ -148,6 +160,8 @@ Includes Cobblestone S17, Fabric API, Chat Utilities, chat configuration, corres
 | 5 | /cookie suspicious | Use Suspicious cookie |
 | Right Shift | `/s17hud` | Edit HUD positions and sizes |
 | — | `/s17chconfig` | Open mod settings |
+| — | `/s17chance` | Toggle Rush/Echo chance notifications |
+| — | `/s17chancesound` | Toggle the chance notification sound |
 | — | `/guild` | Open the guild menu; enter the quest screen to sync the HUD |
 | — | `/s17chattest` | Preview chat routing locally; nothing is broadcast |
 
@@ -212,6 +226,16 @@ Shows the current time in Japan (JST) and the FARMED increase for the last compl
 FARMED is read only at minute 00 of each hour in Japan time. The difference from the previous hour is shown as `60min 100000` on the HUD and in a local-only chat report. The first minute-00 reading establishes the baseline; the next produces the first result. History is saved in `config/s17-farmed-history.tsv`. Totals may include rounding error because the server uses K/M suffixes. Disconnecting, a decreasing counter, or a missed hour-boundary reading resets the baseline. Longer intervals are never labeled as 60 minutes.
 
 First-time tutorial prompts (punching trees, crafting planks, etc.) are automatically disabled.
+
+### Rush / Echo chance notifications
+
+Received Rush wave/arrow and Echo arrow display models trigger **RUSH CHANCE! / ECHO CHANCE!** in the vanilla title position, independent of camera direction or audio volume. The position follows window resizing. Chance text uses 75% of the normal title size, with gold/cream for Rush and purple/pink for Echo. After a native proc title is received, its font, boldness, shadow and palette are reused.
+
+Each chain triggers one notification per proc type. Final `ECHO chain (… steps) • …` / `RUSH chain (…s) • …` chat summaries rearm detection; intermediate central ECHO/RUSH titles do not. If no summary arrives, ten seconds without a matching display rearms detection. New central titles replace earlier titles while preserving the separate crop-reward subtitle.
+
+An anvil placement sound plays once with each chance notification. `/s17chance` toggles notifications, and `/s17chancesound` toggles only the added sound. Both commands alternate ON/OFF and save the setting. The sound follows Minecraft's UI volume. Rush and Echo can also be toggled individually in `/s17chconfig`. `/s17rushtest` and `/s17echotest` preview the title and sound locally.
+
+Central special-crop rewards omit only the crop name, keeping the multiplier, amount, progress, Golden multiplier and colors. Example: `1335x [+30.27B Warped Wart] GOLDEN x5` → `1335x [+30.27B] GOLDEN x5`.
 
 ### Feature toggles
 

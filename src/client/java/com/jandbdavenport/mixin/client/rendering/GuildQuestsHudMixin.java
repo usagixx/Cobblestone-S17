@@ -14,10 +14,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  */
 @Mixin(InGameHud.class)
 public class GuildQuestsHudMixin {
+    @Inject(method = "setTitle", at = @At("HEAD"))
+    private void s17$rememberProcColors(net.minecraft.text.Text text, CallbackInfo ci) {
+        com.jandbdavenport.cobblestonehelper.features.ProcTitleAppearance.observe(text);
+    }
 	@Inject(method = "render", at = @At("TAIL"))
 	private void renderGuildQuestsHud(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
 		GuildQuestsManager.renderHud(context);
         com.jandbdavenport.cobblestonehelper.features.SessionStatsHud.render(context);
 	}
 }
-

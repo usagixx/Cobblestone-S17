@@ -107,3 +107,9 @@ This modified source follows the repository's GPL-3.0 license (LICENSE), rather 
 - Keep weather after Celestial and before Global/Cookie bars.
 
 - Add a persistent ON/OFF setting for cookie shortcut keys 2/3/5.
+
+## 1.9.2
+- Add model-based Rush/Echo chance notifications with native title placement, matching styles and 75% title size.
+- Rearm on exact final chain summaries; retain the ten-second quiet fallback without resetting on intermediate titles.
+- Add persistent /s17chance and /s17chancesound toggles and an anvil placement sound.
+- Preserve crop subtitles and remove only crop names, including Golden reward lines.

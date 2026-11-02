@@ -1,4 +1,4 @@
-Cobblestone S17 v1.9.1 — 別PCへの導入
+Cobblestone S17 v1.9.2 — 別PCへの導入
 
 対象: Minecraft Java Edition 1.21.11 / Fabric Loader 0.20.1 / Java 21以上
 Minecraft本体・アカウント・ランチャーは別途必要です。
@@ -30,7 +30,7 @@ HUDの位置・大きさは別PCの画面に合わせて初期値から調整で
 未対応の会話書式は通知側に表示されることがあります。
 
 同梱:
-  Cobblestone S17 1.9.1（改変MOD）
+  Cobblestone S17 1.9.2（改変MOD）
   Fabric API 0.141.6+1.21.11
   Chat Utilities 2.2.3
   会話/通知分離設定、改変MODの対応ソース、ライセンス
@@ -74,3 +74,8 @@ Farm Warpsのタイトル枠をクリックするとFish Warpsへ切り替わり
 
 /s17chconfig の Cookie keys (2/3/5) でクッキーキーのON/OFFを保存できます。
 天候8種類を認識し、ウェザーをセレスティアルの次に表示します。
+
+Rush/Echoの専用表示を検知すると、中央見出し位置にRUSH CHANCE!/ECHO CHANCE!を標準の75％サイズで表示します。従来のフォントと配色を引き継ぎ、初回だけ金床を置く音を鳴らします。追加音はUI音量に従います。
+/s17chance: 通知全体のON/OFF。/s17chancesound: 追加音だけON/OFF。どちらも実行ごとに切り替わり、保存されます。
+終了チャットで再検知を有効化します。連鎖途中の中央見出しではリセットしません。終了通知がない場合は専用表示が10秒途切れると再検知します。
+スペシャルクロップの報酬表示は作物名だけを削除し、倍率・獲得数・回数・GOLDEN倍率を残します。
