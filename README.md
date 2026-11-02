@@ -8,7 +8,7 @@
 
 ### ダウンロード・導入
 
-**[Cobblestone S17 v1.9.2をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9.2-portable.zip)**
+**[Cobblestone S17 v1.9.3をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9.3-portable.zip)**
 
 動作環境：Minecraft Java Edition **1.21.11**／Fabric Loader **0.20.1**／Java **21以上**。Minecraft本体・アカウント・ランチャーは別途必要です。
 
@@ -32,7 +32,7 @@
 | — | `/s17chconfig` | MOD設定を開く |
 | — | `/s17chance` | Rush・Echoのチャンス通知をまとめてON／OFF |
 | — | `/s17chancesound` | チャンス通知の金床音だけON／OFF |
-| — | `/guild` | ギルド画面を開く。クエスト画面まで進むとHUDに同期 |
+| — | `/quest` | `/guild quests` を実行してクエスト画面を開き、HUDに同期 |
 | — | `/s17chattest` | チャットの振り分けをテスト。自分の画面だけに表示 |
 
 `/guild` と `/cookie` はサーバー側のコマンドです。クッキーキーはチャット・メニューを開いている間は反応せず、長押ししても連打しません。数字キーはホットバー選択と競合するため、必要に応じて操作設定で割り当てを変更してください。
@@ -41,13 +41,13 @@
 
 `R` または `/wf` で農場選択画面を開き、S17の作物一覧から行き先を選びます。小さい画面ではスクロールして選択できます。
 
-R画面では、未完了の収穫クエスト対象に緑、Combatクエスト対象のMOBがいる農場に赤い枠線が付きます。クエスト情報は /guild から同期してください。
+R画面では、未完了の収穫クエスト対象に緑、Combatクエスト対象のMOBがいる農場に赤い枠線が付きます。クエスト情報は /quest で画面を開いて同期してください。
 
 Farm Warpsのタイトル枠をクリックすると **Fish Warps** に切り替わり、もう一度クリックすると戻ります。魚20種類のアイコンを押すと /fish 魚名 を実行します。専用アイコンはサーバーのリソースパックから表示し、未適用の場合は代わりに通常の魚を表示します。W6はRedstone・Raw Gold・Netheriteを含む8枠です。
 
 ### ギルドクエストHUD
 
-`/guild` から **Guild Quests** を開くと、MOB討伐2件・作物収穫2件の対象と達成状況を読み取ります。4件そろうと同期を完了し、HUDに対象・完了数・更新までの時間を表示します。情報を更新したいときは、クエスト画面を開き直してください。
+MODの `/quest` を入力すると、サーバーへ `/guild quests` を送って **Guild Quests** を開き、MOB討伐2件・作物収穫2件の対象と達成状況を読み取ります。4件そろうと同期を完了し、HUDに対象・完了数・更新までの時間を表示します。情報を更新したいときは、クエスト画面を開き直してください。
 
 クエスト画面の右上にあるボタン：
 
@@ -138,7 +138,7 @@ Rushの輪・矢印とEchoの矢印を受信データから検知し、従来の
 
 ### Download and installation
 
-**[Download Cobblestone S17 v1.9.2](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9.2-portable.zip)**
+**[Download Cobblestone S17 v1.9.3](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9.3-portable.zip)**
 
 Requires Minecraft Java Edition **1.21.11**, Fabric Loader **0.20.1**, and Java **21 or later**. Minecraft, an account, and a launcher are required separately.
 
@@ -162,7 +162,7 @@ Includes Cobblestone S17, Fabric API, Chat Utilities, chat configuration, corres
 | — | `/s17chconfig` | Open mod settings |
 | — | `/s17chance` | Toggle Rush/Echo chance notifications |
 | — | `/s17chancesound` | Toggle the chance notification sound |
-| — | `/guild` | Open the guild menu; enter the quest screen to sync the HUD |
+| — | `/quest` | Run `/guild quests` to open the quest screen and sync the HUD |
 | — | `/s17chattest` | Preview chat routing locally; nothing is broadcast |
 
 `/guild` and `/cookie` are server commands. Cookie shortcuts are inactive in chat and menus and do not repeat while held. Number keys conflict with hotbar selection; rebind them in Controls if needed.
@@ -171,13 +171,13 @@ Includes Cobblestone S17, Fabric API, Chat Utilities, chat configuration, corres
 
 Press `R` or enter `/wf`, then select a destination from the S17 crop list. Scroll to reach all destinations on smaller screens.
 
-In the R menu, unfinished farming objectives have green outlines; farms hosting combat quest targets have red outlines. Sync quest information through /guild.
+In the R menu, unfinished farming objectives have green outlines; farms hosting combat quest targets have red outlines. Open /quest to sync quest information.
 
 Click the Farm Warps title bar to switch to **Fish Warps**, and click again to return. Select one of 20 fish to run /fish FishName. Custom icons use the server resource pack; a vanilla fish appears if it is unavailable. W6 has eight destinations, including Redstone, Raw Gold, and Netherite.
 
 ### Guild quest HUD
 
-Enter `/guild` and open **Guild Quests** to read two mob quests and two farming quests. Sync completes once all four quest items arrive. The HUD shows targets, the completed quest count, and the reset timer. Reopen the quest screen to refresh the information.
+The client command `/quest` sends `/guild quests` to the server, opening **Guild Quests** to read two mob quests and two farming quests. Sync completes once all four quest items arrive. The HUD shows targets, the completed quest count, and the reset timer. Reopen the quest screen to refresh the information.
 
 Buttons at the top right of the quest screen:
 

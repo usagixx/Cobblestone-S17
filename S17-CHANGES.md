@@ -113,3 +113,7 @@ This modified source follows the repository's GPL-3.0 license (LICENSE), rather 
 - Rearm on exact final chain summaries; retain the ten-second quiet fallback without resetting on intermediate titles.
 - Add persistent /s17chance and /s17chancesound toggles and an anvil placement sound.
 - Preserve crop subtitles and remove only crop names, including Golden reward lines.
+
+## 1.9.3
+- Add the client command /quest as a shortcut for the server command /guild quests.
+- Update the unsynced quest HUD hint and Japanese/English instructions.

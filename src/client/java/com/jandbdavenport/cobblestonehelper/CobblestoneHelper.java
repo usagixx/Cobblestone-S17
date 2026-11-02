@@ -161,6 +161,17 @@ public class CobblestoneHelper implements ClientModInitializer {
                 return Command.SINGLE_SUCCESS;
             })));
 
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
+            dispatcher.register(literal("quest").executes(ctx -> {
+                var network = MinecraftClient.getInstance().getNetworkHandler();
+                if (network == null) {
+                    ctx.getSource().sendError(Text.literal("Connect to a server before opening guild quests."));
+                    return 0;
+                }
+                network.sendChatCommand("guild quests");
+                return Command.SINGLE_SUCCESS;
+            })));
+
         // Register /s17chconfig command
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
 			dispatcher.register(literal("s17chconfig").executes(ctx -> {

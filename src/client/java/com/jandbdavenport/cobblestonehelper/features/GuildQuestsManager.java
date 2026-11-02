@@ -713,7 +713,7 @@ public class GuildQuestsManager {
                 rows.add(new HudRow("ᴄʀᴏᴘ Ⅱ", "Honeycomb", ModConfig.gqColorTarget));
                 rows.add(new HudRow("ᴅᴏɴᴇ", "0/4", ModConfig.gqColorTarget));
             } else {
-                rows.add(new HudRow("ꜱʏɴᴄ", "/guild", ModConfig.gqColorTarget));
+                rows.add(new HudRow("ꜱʏɴᴄ", "/quest", ModConfig.gqColorTarget));
                 rows.add(new HudRow("", "Open Guild Quests to load", ModConfig.gqColorUnknown));
             }
             return rows;
