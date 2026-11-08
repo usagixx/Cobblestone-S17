@@ -77,7 +77,7 @@ public class FarmWarpScreen extends Screen {
             ? new FarmData.FarmCategory[]{com.jandbdavenport.cobblestonehelper.data.FishData.CATEGORY}
             : FarmData.LIST.toArray(new FarmData.FarmCategory[0]);
 		for (FarmData.FarmCategory category : categories) {
-			tempY += 12;  // Space for category label
+			if (fishPage) tempY += 12;
 
 			int col = 0;
 			for (FarmData.FarmEntry entry : category.crops()) {
@@ -110,8 +110,8 @@ public class FarmWarpScreen extends Screen {
 
 		for (int catIndex = 0; catIndex < categories.length; catIndex++) {
 			FarmData.FarmCategory category = categories[catIndex];
-			categoryHeaders.add(new CategoryHeader(category.name(), y + 2));
-			y += 12;  // Space for category label
+			categoryHeaders.add(new CategoryHeader(fishPage ? "" : Integer.toString(catIndex + 1), y + 5));
+			if (fishPage) y += 12;
 
 			int col = 0;
 			int x = this.gridStartX;
@@ -208,11 +208,11 @@ public class FarmWarpScreen extends Screen {
 			int headerX = this.gridStartX;
 			int headerY = header.y();
 
-			// Left accent bar (3px wide × 9px tall) with pulsing animation
-			context.fill(headerX - 7, headerY - 2, headerX - 4, headerY + 7, accentColor);
-
-			// Category name in orange
-			context.drawTextWithShadow(this.textRenderer, Text.literal(header.name()), headerX, headerY, ModConfig.fwMenuColorAccent);
+            if (!fishPage) {
+                // The eighth icon is followed by the world number in the free ninth column.
+                int numberX = gridStartX + 8 * (SLOT_SIZE + 2) + (SLOT_SIZE - textRenderer.getWidth(header.name())) / 2;
+                context.drawTextWithShadow(textRenderer, Text.literal(header.name()), numberX, headerY, accentColor);
+            }
 		}
 
 		// 8. Render crop item widgets (they handle their own hover states)

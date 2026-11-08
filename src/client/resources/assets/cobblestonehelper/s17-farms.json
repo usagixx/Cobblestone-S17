@@ -268,5 +268,50 @@
         "commandArg": "netherite"
       }
     ]
+  },
+  {
+    "name": "Cobblespace",
+    "crops": [
+      {
+        "displayName": "End Stone",
+        "itemId": "minecraft:end_stone",
+        "commandArg": "endstone"
+      },
+      {
+        "displayName": "Blue Ice",
+        "itemId": "minecraft:blue_ice",
+        "commandArg": "blueice"
+      },
+      {
+        "displayName": "Copper",
+        "itemId": "minecraft:copper_block",
+        "commandArg": "copper"
+      },
+      {
+        "displayName": "Moss",
+        "itemId": "minecraft:moss_block",
+        "commandArg": "moss"
+      },
+      {
+        "displayName": "Amethyst",
+        "itemId": "minecraft:amethyst_block",
+        "commandArg": "amethyst"
+      },
+      {
+        "displayName": "Emerald",
+        "itemId": "minecraft:emerald_block",
+        "commandArg": "emerald"
+      },
+      {
+        "displayName": "Sea Lantern",
+        "itemId": "minecraft:sea_lantern",
+        "commandArg": "sealantern"
+      },
+      {
+        "displayName": "Diamond",
+        "itemId": "minecraft:diamond_block",
+        "commandArg": "diamond"
+      }
+    ]
   }
 ]

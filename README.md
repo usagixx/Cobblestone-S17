@@ -8,7 +8,7 @@
 
 ### ダウンロード・導入
 
-**[Cobblestone S17 v1.9.3をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9.3-portable.zip)**
+**[Cobblestone S17 v1.10.0をダウンロード](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.10.0-portable.zip)**
 
 動作環境：Minecraft Java Edition **1.21.11**／Fabric Loader **0.20.1**／Java **21以上**。Minecraft本体・アカウント・ランチャーは別途必要です。
 
@@ -43,7 +43,7 @@
 
 R画面では、未完了の収穫クエスト対象に緑、Combatクエスト対象のMOBがいる農場に赤い枠線が付きます。クエスト情報は /quest で画面を開いて同期してください。
 
-Farm Warpsのタイトル枠をクリックすると **Fish Warps** に切り替わり、もう一度クリックすると戻ります。魚20種類のアイコンを押すと /fish 魚名 を実行します。専用アイコンはサーバーのリソースパックから表示し、未適用の場合は代わりに通常の魚を表示します。W6はRedstone・Raw Gold・Netheriteを含む8枠です。
+Farm Warpsのタイトル枠をクリックすると **Fish Warps** に切り替わり、もう一度クリックすると戻ります。魚28種類のアイコンを押すと /fish 魚名 を実行します。専用アイコンはサーバーのリソースパックから表示し、未適用の場合は代わりに通常の魚を表示します。農場はW7（Cobblespace）まで対応し、各行の右にワールド番号1～7を表示します。W6・W7のMOBクエストも対応する農場を赤枠で表示します。
 
 ### ギルドクエストHUD
 
@@ -138,7 +138,7 @@ Rushの輪・矢印とEchoの矢印を受信データから検知し、従来の
 
 ### Download and installation
 
-**[Download Cobblestone S17 v1.9.3](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.9.3-portable.zip)**
+**[Download Cobblestone S17 v1.10.0](https://github.com/usagixx/Cobblestone-S17/raw/refs/heads/main/distribution/Cobblestone-S17-v1.10.0-portable.zip)**
 
 Requires Minecraft Java Edition **1.21.11**, Fabric Loader **0.20.1**, and Java **21 or later**. Minecraft, an account, and a launcher are required separately.
 
@@ -173,7 +173,7 @@ Press `R` or enter `/wf`, then select a destination from the S17 crop list. Scro
 
 In the R menu, unfinished farming objectives have green outlines; farms hosting combat quest targets have red outlines. Open /quest to sync quest information.
 
-Click the Farm Warps title bar to switch to **Fish Warps**, and click again to return. Select one of 20 fish to run /fish FishName. Custom icons use the server resource pack; a vanilla fish appears if it is unavailable. W6 has eight destinations, including Redstone, Raw Gold, and Netherite.
+Click the Farm Warps title bar to switch to **Fish Warps**, and click again to return. Select one of 28 fish to run /fish FishName. Custom icons use the server resource pack; a vanilla fish appears if it is unavailable. Farms include W7 (Cobblespace), with world numbers 1–7 on the right of each row. W6 and W7 mob quests highlight their corresponding farm destinations in red.
 
 ### Guild quest HUD
 

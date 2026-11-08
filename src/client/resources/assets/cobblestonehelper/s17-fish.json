@@ -98,5 +98,45 @@
     "displayName": "Flounder",
     "itemId": "cobblestone:fish/flounder",
     "commandArg": "Flounder"
+  },
+  {
+    "displayName": "Haddock",
+    "itemId": "cobblestone:fish/haddock",
+    "commandArg": "Haddock"
+  },
+  {
+    "displayName": "Arctic Char",
+    "itemId": "cobblestone:fish/arcticchar",
+    "commandArg": "Arctic Char"
+  },
+  {
+    "displayName": "Sturgeon",
+    "itemId": "cobblestone:fish/sturgeon",
+    "commandArg": "Sturgeon"
+  },
+  {
+    "displayName": "Swordfish",
+    "itemId": "cobblestone:fish/swordfish",
+    "commandArg": "Swordfish"
+  },
+  {
+    "displayName": "Perch",
+    "itemId": "cobblestone:fish/perch",
+    "commandArg": "Perch"
+  },
+  {
+    "displayName": "Pike",
+    "itemId": "cobblestone:fish/pike",
+    "commandArg": "Pike"
+  },
+  {
+    "displayName": "Grouper",
+    "itemId": "cobblestone:fish/grouper",
+    "commandArg": "Grouper"
+  },
+  {
+    "displayName": "Ocean Sunfish",
+    "itemId": "cobblestone:fish/oceansunfish",
+    "commandArg": "Ocean Sunfish"
   }
 ]

@@ -144,10 +144,10 @@ public class GuildQuestsManager {
 	 */
 	public static String getQuestHighlightType(String name) {
 		// Check crop quests
-		if (!crop3kComplete && !crop3kTarget.isEmpty() && crop3kTarget.equalsIgnoreCase(name)) {
+		if (!crop3kComplete && !crop3kTarget.isEmpty() && QuestText.key(crop3kTarget).equals(QuestText.key(name))) {
 			return "crop-green";
 		}
-		if (!crop7500Complete && !crop7500Target.isEmpty() && crop7500Target.equalsIgnoreCase(name)) {
+		if (!crop7500Complete && !crop7500Target.isEmpty() && QuestText.key(crop7500Target).equals(QuestText.key(name))) {
 			return "crop-green";
 		}
 
@@ -346,11 +346,17 @@ public class GuildQuestsManager {
 					continue;
 				}
 
-				String displayName = stack.getName().getString().replaceAll("§.", "").toUpperCase(java.util.Locale.ROOT);
-				List<Text> lore = ContainerScreenUtils.getLoreLines(stack);
+				String displayName = QuestText.plain(stack.getName().getString()).toUpperCase(java.util.Locale.ROOT);
+				List<Text> rawLore = ContainerScreenUtils.getLoreLines(stack);
+                String action = rawLore.stream().map(Text::getString).map(QuestText::plain)
+                    .filter(line -> !QuestText.target(line).isEmpty()).findFirst().orElse("");
+                if (action.isEmpty()) continue;
+                String progress = rawLore.stream().map(Text::getString).map(QuestText::plain)
+                    .filter(line -> line.matches(".*[0-9,]+\\s*/\\s*[0-9,]+.*")).findFirst().orElse("");
+                List<Text> lore = List.of(Text.empty(), Text.empty(), Text.literal(action), Text.literal(progress));
 
 				// Parse boss quest #1
-				if (displayName.contains("BOSS QUEST #1") || displayName.contains("MOB QUEST #1")) {
+				if (displayName.contains("BOSS QUEST #1") || displayName.contains("MOB QUEST #1") || displayName.contains("COMBAT QUEST #1")) {
 					if (lore.size() > 2) {
 						String actionLine = lore.get(2).getString();
 						newBoss1ActionLine = actionLine.trim().replaceAll("^\\|\\s*", ""); // Strip leading pipe
@@ -363,7 +369,7 @@ public class GuildQuestsManager {
 					questItemsFound++;
 				}
 				// Parse boss quest #2
-				else if (displayName.contains("BOSS QUEST #2") || displayName.contains("MOB QUEST #2")) {
+				else if (displayName.contains("BOSS QUEST #2") || displayName.contains("MOB QUEST #2") || displayName.contains("COMBAT QUEST #2")) {
 					if (lore.size() > 2) {
 						String actionLine = lore.get(2).getString();
 						newBoss2ActionLine = actionLine.trim().replaceAll("^\\|\\s*", ""); // Strip leading pipe
@@ -436,7 +442,7 @@ public class GuildQuestsManager {
 	private static boolean isQuestItemEnchanted(ItemStack stack) {
 		try {
 			var glintOverride = stack.get(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE);
-			return glintOverride != null;
+			return Boolean.TRUE.equals(glintOverride) || stack.hasGlint();
 		} catch (Exception e) {
 			return false;
 		}
@@ -465,14 +471,7 @@ public class GuildQuestsManager {
 	 * Format: [Pipe] [Action] [Number] [BossName...]
 	 */
 	private static String extractBossTarget(String actionLine) {
-		// Pattern: word (Kill) followed by a number, then the boss name
-		// Handles formats like " | Kill 3 Overworld Cadaver"
-		Pattern pattern = Pattern.compile("[A-Za-z]+\\s+[\\d,]+\\s+(.+)");
-		Matcher matcher = pattern.matcher(actionLine);
-		if (matcher.find()) {
-			return matcher.group(1).trim(); // Return everything after the number
-		}
-		return "Unknown";
+        return QuestText.target(actionLine);
 	}
 
 	/**
@@ -481,14 +480,7 @@ public class GuildQuestsManager {
 	 * Format: [Pipe] [Action] [Number with commas] [CropName...]
 	 */
 	private static String extractCropName(String actionLine) {
-		// Pattern: word(s) followed by a number (with optional commas), then the crop name
-		// Handles formats like " | Farm 3,000 Rose" or "Farm 3000 Rose"
-		Pattern pattern = Pattern.compile("[A-Za-z]+\\s+[\\d,]+\\s+(.+)");
-		Matcher matcher = pattern.matcher(actionLine);
-		if (matcher.find()) {
-			return matcher.group(1).trim(); // Return everything after the number
-		}
-		return "Unknown";
+        return QuestText.target(actionLine);
 	}
 
 	/**

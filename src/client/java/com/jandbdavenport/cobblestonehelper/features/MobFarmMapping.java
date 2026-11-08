@@ -20,6 +20,6 @@ public final class MobFarmMapping {
     }
     public static String farmFor(String mob) {
         if (mob == null) return "";
-        return FARMS.getOrDefault(mob.replaceAll("§.", "").trim().replaceAll("\\s+", " ").toLowerCase(Locale.ROOT), "");
+        return FARMS.getOrDefault(QuestText.key(mob), "");
     }
 }
